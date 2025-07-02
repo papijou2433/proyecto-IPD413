@@ -24,11 +24,11 @@ lab=CLK}
 N 260 10 280 10 {
 lab=Vin1}
 N 480 40 620 40 {
-lab=out2}
-N 480 80 550 80 {
 lab=out1}
-N 620 40 620 80 {
+N 480 80 550 80 {
 lab=out2}
+N 620 40 620 80 {
+lab=out1}
 N 550 140 550 160 {
 lab=Vss}
 N 620 140 620 160 {
@@ -48,7 +48,9 @@ lab=CLK}
 C {code.sym} -170 -110 0 0 {name=Sim_param only_toplevel=false value=
 "
 .param Vdd = 1.2
-
+.param ACM = 10m
+.param FCM = 10MEG
+.param VCM = 0.6
 
 "}
 C {vsource.sym} -240 270 0 0 {name=Vdd value=\{Vdd\} savecurrent=false}
@@ -93,17 +95,18 @@ save all
 + @n.x1.xm1.nsg13_lv_nmos[ids]
 + @n.x1.xm2.nsg13_lv_nmos[ids]
 op
-let CgP  = @n.x1.xm1.nsg13_lv_nmos[cdd] + @n.x1.xm1.nsg13_lv_nmos[cdb]
-let CgQ  = @n.x1.xm2.nsg13_lv_nmos[cdd] + @n.x1.xm2.nsg13_lv_nmos[cdb]
+let CP   = @n.x1.xm1.nsg13_lv_nmos[cdd] + @n.x1.xm1.nsg13_lv_nmos[cdb] + @n.x1.xm1.nsg13_lv_nmos[cgdol]
+let CQ   = @n.x1.xm2.nsg13_lv_nmos[cdd] + @n.x1.xm2.nsg13_lv_nmos[cdb] + @n.x1.xm2.nsg13_lv_nmos[cgdol]
 let gm1  = @n.x1.xm1.nsg13_lv_nmos[gm]
 let gm2  = @n.x1.xm2.nsg13_lv_nmos[gm]
 let rds1 = 1/@n.x1.xm1.nsg13_lv_nmos[gds]
 let rds2 = 1/@n.x1.xm2.nsg13_lv_nmos[gds]
 let Av1  = gm1*rds1
 let Av2  = gm2*rds2
-
-print CgP CgQ
+print CP CQ
+print 
 print Av1 Av2
+print v(vout1)
 .endc
 "}
 C {code.sym} -160 50 0 0 {name=Sim_amp spice_ignore=1
@@ -118,25 +121,6 @@ C {lab_pin.sym} 360 -30 0 0 {name=p4 sig_type=std_logic lab=Vdd}
 C {lab_pin.sym} 260 110 0 0 {name=p5 sig_type=std_logic lab=Vin2}
 C {lab_pin.sym} 260 10 0 0 {name=p6 sig_type=std_logic lab=Vin1}
 C {lab_pin.sym} 260 60 0 0 {name=p7 sig_type=std_logic lab=CLK}
-C {code.sym} -30 50 0 0 {name=tran_sim spice_ignore=1 only_toplevel=false value="
-.control
-.param T = 1u
-.param SimTime = 3*T + 100n
-save all
-+ @n.x1.xm1.nsg13_lv_nmos[gm]
-+ @n.x1.xm2.nsg13_lv_nmos[gm]
-+ @n.x1.xm1.nsg13_lv_nmos[ids]
-+ @n.x1.xm2.nsg13_lv_nmos[ids]
-tran 1n 3.1u
-let gm1 = @n.x1.xm1.nsg13_lv_nmos[gm]
-let ids1= @n.x1.xm1.nsg13_lv_nmos[ids]
-let CgP = @n.x1.xm1.nsg13_lv_nmos[cdd] + @n.x1.xm1.nsg13_lv_nmos[cdb]
-
-plot v(out1) v(out2)
-plot v(x1.Q)
-plot v(x1.P) 
-.endc
-"}
 C {capa.sym} 550 110 0 0 {name=C1
 m=1
 value=50f
@@ -149,14 +133,14 @@ footprint=1206
 device="ceramic capacitor"}
 C {lab_pin.sym} 550 160 0 0 {name=p8 sig_type=std_logic lab=Vss}
 C {lab_pin.sym} 620 160 0 0 {name=p9 sig_type=std_logic lab=Vss}
-C {lab_pin.sym} 550 80 2 0 {name=p10 sig_type=std_logic lab=out1}
-C {lab_pin.sym} 620 40 2 0 {name=p11 sig_type=std_logic lab=out2}
+C {lab_pin.sym} 550 80 2 0 {name=p10 sig_type=std_logic lab=out2}
+C {lab_pin.sym} 620 40 2 0 {name=p11 sig_type=std_logic lab=out1}
 C {vsource.sym} -50 270 0 0 {name=Vin1 value=0.5 savecurrent=false}
 C {gnd.sym} -50 320 0 0 {name=l3 lab=GND}
 C {lab_pin.sym} -50 220 0 0 {name=p12 sig_type=std_logic lab=Vin1}
 C {vsource.sym} 60 270 0 0 {name=Vin2 value=0.45 savecurrent=false}
 C {gnd.sym} 60 320 0 0 {name=l4 lab=GND}
 C {lab_pin.sym} 60 220 0 0 {name=p13 sig_type=std_logic lab=Vin2}
-C {vsource.sym} 150 270 0 0 {name=Vclock value="PULSE(0 \{Vdd\} \{T/2\} \{T/20\} \{T/20\} \{T/2\} \{T\})" savecurrent=false}
+C {vsource.sym} 150 270 0 0 {name=Vclock value="dc=1.2 ac=0" savecurrent=false}
 C {gnd.sym} 150 320 0 0 {name=l5 lab=GND}
 C {lab_pin.sym} 150 220 0 0 {name=p14 sig_type=std_logic lab=CLK}

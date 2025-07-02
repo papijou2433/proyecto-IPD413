@@ -196,10 +196,10 @@ model=sg13_lv_pmos
 spiceprefix=X
 }
 C {sg13g2_pr/sg13_lv_pmos.sym} -300 -320 0 0 {name=M9
-l=0.45u
-w=1.0u
+l=\{L89\}
+w=\{W89\}
 ng=1
-m=1
+m=\{M89\}
 model=sg13_lv_pmos
 spiceprefix=X
 }

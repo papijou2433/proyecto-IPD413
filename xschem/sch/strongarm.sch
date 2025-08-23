@@ -6,13 +6,9 @@ V {}
 S {}
 E {}
 N -90 -50 -90 -30 {
-lab=#net1}
-N 0 -30 90 -30 {
-lab=#net1}
-N 0 -30 0 -10 {
-lab=#net1}
-N -90 -30 0 -30 {
-lab=#net1}
+lab=Vcommon}
+N -0 -30 90 -30 {
+lab=Vcommon}
 N 90 -130 90 -110 {
 lab=Q}
 N 90 -130 120 -130 {
@@ -26,37 +22,37 @@ lab=P}
 N -90 -150 -90 -130 {
 lab=P}
 N -90 -250 -90 -210 {
-lab=Vout1}
+lab=Vop}
 N 90 -250 90 -210 {
-lab=Vout2}
+lab=Voq}
 N -50 -180 -30 -180 {
-lab=Vout2}
+lab=Voq}
 N 30 -320 50 -320 {
-lab=Vout1}
+lab=Vop}
 N -90 -290 -90 -250 {
-lab=Vout1}
+lab=Vop}
 N -40 -250 30 -320 {
-lab=Vout1}
+lab=Vop}
 N -90 -250 -40 -250 {
-lab=Vout1}
+lab=Vop}
 N -40 -250 30 -180 {
-lab=Vout1}
+lab=Vop}
 N 30 -180 50 -180 {
-lab=Vout1}
+lab=Vop}
 N -30 -180 40 -250 {
-lab=Vout2}
+lab=Voq}
 N 40 -250 90 -250 {
-lab=Vout2}
+lab=Voq}
 N 90 -290 90 -250 {
-lab=Vout2}
+lab=Voq}
 N -30 -320 40 -250 {
-lab=Vout2}
+lab=Voq}
 N -50 -320 -30 -320 {
-lab=Vout2}
+lab=Voq}
 N 90 -250 120 -250 {
-lab=Vout2}
+lab=Voq}
 N -120 -250 -90 -250 {
-lab=Vout1}
+lab=Vop}
 N 90 -370 90 -320 {
 lab=Vdd}
 N -90 -370 90 -370 {
@@ -71,23 +67,19 @@ N -460 -290 -460 -260 {
 lab=P}
 N -340 -320 -320 -320 {
 lab=CLK}
-N 0 70 0 80 {
+N 0 150 0 160 {
 lab=Vss}
 N 90 -50 90 -30 {
-lab=#net1}
+lab=Vcommon}
+N 50 100 50 150 {
+lab=Vss}
 N 50 -80 90 -80 {
 lab=Vss}
-N 50 20 50 70 {
+N 0 150 50 150 {
 lab=Vss}
-N -90 -80 50 -80 {
+N 0 100 50 100 {
 lab=Vss}
-N 0 70 50 70 {
-lab=Vss}
-N -0 20 50 20 {
-lab=Vss}
-N 50 -80 50 20 {
-lab=Vss}
-N -0 50 -0 70 {
+N 0 130 0 150 {
 lab=Vss}
 N 90 -180 160 -180 {
 lab=Vss}
@@ -107,18 +99,18 @@ N -460 -370 -280 -370 {
 lab=Vdd}
 N -480 -370 -460 -370 {
 lab=Vdd}
-N -60 20 -40 20 {
+N -60 100 -40 100 {
 lab=CLK}
 N -280 -240 -280 -190 {
 lab=Vdd}
 N -460 -240 -460 -190 {
 lab=Vdd}
 N -460 -160 -460 -130 {
-lab=Vout1}
+lab=Vop}
 N -340 -190 -320 -190 {
 lab=CLK}
 N -280 -160 -280 -130 {
-lab=Vout2}
+lab=Voq}
 N -520 -190 -500 -190 {
 lab=CLK}
 N -460 -240 -280 -240 {
@@ -131,6 +123,18 @@ N -410 -400 -370 -400 {
 lab=Vss}
 N -410 -460 -370 -460 {
 lab=Vdd}
+N 50 -80 50 100 {
+lab=Vss}
+N -90 -80 50 -80 {
+lab=Vss}
+N -0 -30 -0 70 {
+lab=Vcommon}
+N -90 -30 -0 -30 {
+lab=Vcommon}
+N -170 -450 -110 -450 {
+lab=Vout2}
+N -170 -420 -110 -420 {
+lab=Vout1}
 C {sg13g2_pr/sg13_lv_nmos.sym} -110 -80 2 1 {name=M1
 l=\{L12\}
 w=\{W12\}
@@ -164,10 +168,10 @@ model=sg13_lv_nmos
 spiceprefix=X
 }
 C {sg13g2_pr/sg13_lv_pmos.sym} 70 -320 0 0 {name=M6
-l=0.45u
-w=1.0u
+l=\{L56\}
+w=\{W56\}
 ng=1
-m=1
+m=\{M56\}
 model=sg13_lv_pmos
 spiceprefix=X
 }
@@ -179,7 +183,7 @@ m=\{M56\}
 model=sg13_lv_pmos
 spiceprefix=X
 }
-C {sg13g2_pr/sg13_lv_nmos.sym} -20 20 2 1 {name=M7
+C {sg13g2_pr/sg13_lv_nmos.sym} -20 100 2 1 {name=M7
 l=\{L7\}
 w=\{W7\}
 ng=1
@@ -203,8 +207,8 @@ m=\{M89\}
 model=sg13_lv_pmos
 spiceprefix=X
 }
-C {opin.sym} 120 -250 0 0 {name=p3 lab=Vout2}
-C {opin.sym} -120 -250 2 0 {name=p4 lab=Vout1}
+C {opin.sym} -170 -450 2 0 {name=p3 lab=Vout2}
+C {opin.sym} -170 -420 2 0 {name=p4 lab=Vout1}
 C {ipin.sym} -160 -80 0 0 {name=p5 lab=Vin1}
 C {ipin.sym} 160 -80 0 1 {name=p6 lab=Vin2}
 C {lab_pin.sym} -460 -260 0 0 {name=p9 sig_type=std_logic lab=P}
@@ -219,8 +223,8 @@ m=\{Wab\}
 model=sg13_lv_pmos
 spiceprefix=X
 }
-C {lab_pin.sym} -460 -130 0 0 {name=p17 sig_type=std_logic lab=Vout1}
-C {lab_pin.sym} -280 -130 0 0 {name=p18 sig_type=std_logic lab=Vout2}
+C {lab_pin.sym} -460 -130 0 0 {name=p17 sig_type=std_logic lab=Vop}
+C {lab_pin.sym} -280 -130 0 0 {name=p18 sig_type=std_logic lab=Voq}
 C {sg13g2_pr/sg13_lv_pmos.sym} -480 -190 0 0 {name=M10
 l=\{Lab\}
 w=\{Wab\}
@@ -235,7 +239,7 @@ C {ipin.sym} -410 -400 0 0 {name=p23 lab=Vss}
 C {lab_pin.sym} -370 -400 2 0 {name=p24 sig_type=std_logic lab=Vss}
 C {lab_pin.sym} 160 -180 2 0 {name=p2 sig_type=std_logic lab=Vss}
 C {lab_pin.sym} -160 -180 0 0 {name=p7 sig_type=std_logic lab=Vss}
-C {lab_pin.sym} 0 80 0 0 {name=p8 sig_type=std_logic lab=Vss}
+C {lab_pin.sym} 0 160 0 0 {name=p8 sig_type=std_logic lab=Vss}
 C {ipin.sym} -410 -460 0 0 {name=p25 lab=Vdd}
 C {lab_pin.sym} -370 -460 2 0 {name=p26 sig_type=std_logic lab=Vdd}
 C {lab_pin.sym} -480 -370 0 0 {name=p1 sig_type=std_logic lab=Vdd}
@@ -244,4 +248,10 @@ C {lab_pin.sym} -520 -320 2 1 {name=p11 sig_type=std_logic lab=CLK}
 C {lab_pin.sym} -340 -320 2 1 {name=p12 sig_type=std_logic lab=CLK}
 C {lab_pin.sym} -340 -190 2 1 {name=p13 sig_type=std_logic lab=CLK}
 C {lab_pin.sym} -520 -190 2 1 {name=p19 sig_type=std_logic lab=CLK}
-C {lab_pin.sym} -60 20 2 1 {name=p20 sig_type=std_logic lab=CLK}
+C {lab_pin.sym} -60 100 2 1 {name=p20 sig_type=std_logic lab=CLK}
+C {lab_pin.sym} 0 -20 0 0 {name=p27 sig_type=std_logic lab=common
+}
+C {lab_pin.sym} -120 -250 0 0 {name=p28 sig_type=std_logic lab=Vop}
+C {lab_pin.sym} 120 -250 0 1 {name=p29 sig_type=std_logic lab=Voq}
+C {lab_pin.sym} -110 -450 0 1 {name=p30 sig_type=std_logic lab=Voq}
+C {lab_pin.sym} -110 -420 2 0 {name=p31 sig_type=std_logic lab=Vop}

@@ -51,6 +51,18 @@ C {code.sym} -170 -110 0 0 {name=Sim_param only_toplevel=false value=
 .param ACM = 10m
 .param FCM = 10MEG
 .param VCM = 0.6
+.param Vin2 = VCM
+
+* parametros de sweep para offset
+.param V_strt = 0.4
+.param V_stop = 0.8
+.param V_step = 1m
+.param V_curr = 0.4
+
+.ic v(x1.P) = 1.2
+.ic v(x1.Q) = 1.2
+.ic v(out1) = 1.2
+.ic v(out2) = 1.2
 
 "}
 C {vsource.sym} -240 270 0 0 {name=Vdd value=\{Vdd\} savecurrent=false}
@@ -94,19 +106,17 @@ save all
 + @n.x1.xm2.nsg13_lv_nmos[gm]
 + @n.x1.xm1.nsg13_lv_nmos[ids]
 + @n.x1.xm2.nsg13_lv_nmos[ids]
-op
-let CP   = @n.x1.xm1.nsg13_lv_nmos[cdd] + @n.x1.xm1.nsg13_lv_nmos[cdb] + @n.x1.xm1.nsg13_lv_nmos[cgdol]
-let CQ   = @n.x1.xm2.nsg13_lv_nmos[cdd] + @n.x1.xm2.nsg13_lv_nmos[cdb] + @n.x1.xm2.nsg13_lv_nmos[cgdol]
-let gm1  = @n.x1.xm1.nsg13_lv_nmos[gm]
-let gm2  = @n.x1.xm2.nsg13_lv_nmos[gm]
-let rds1 = 1/@n.x1.xm1.nsg13_lv_nmos[gds]
-let rds2 = 1/@n.x1.xm2.nsg13_lv_nmos[gds]
-let Av1  = gm1*rds1
-let Av2  = gm2*rds2
-print CP CQ
-print 
-print Av1 Av2
-print v(vout1)
+
+while V_curr le V_stop
+    alterparam Vin2 = $&V_curr
+    reset
+    save all
+    op
+    wrdata ao_sweep_l.raw ao
+    set appendwrite
+
+    let V_curr = V_curr + V_step
+end
 .endc
 "}
 C {code.sym} -160 50 0 0 {name=Sim_amp spice_ignore=1
@@ -135,10 +145,10 @@ C {lab_pin.sym} 550 160 0 0 {name=p8 sig_type=std_logic lab=Vss}
 C {lab_pin.sym} 620 160 0 0 {name=p9 sig_type=std_logic lab=Vss}
 C {lab_pin.sym} 550 80 2 0 {name=p10 sig_type=std_logic lab=out2}
 C {lab_pin.sym} 620 40 2 0 {name=p11 sig_type=std_logic lab=out1}
-C {vsource.sym} -50 270 0 0 {name=Vin1 value=0.5 savecurrent=false}
+C {vsource.sym} -50 270 0 0 {name=Vin1 value=\{VCM\} savecurrent=false}
 C {gnd.sym} -50 320 0 0 {name=l3 lab=GND}
 C {lab_pin.sym} -50 220 0 0 {name=p12 sig_type=std_logic lab=Vin1}
-C {vsource.sym} 60 270 0 0 {name=Vin2 value=0.45 savecurrent=false}
+C {vsource.sym} 60 270 0 0 {name=Vin2 value=\{Vin2\} savecurrent=false}
 C {gnd.sym} 60 320 0 0 {name=l4 lab=GND}
 C {lab_pin.sym} 60 220 0 0 {name=p13 sig_type=std_logic lab=Vin2}
 C {vsource.sym} 150 270 0 0 {name=Vclock value="dc=1.2 ac=0" savecurrent=false}

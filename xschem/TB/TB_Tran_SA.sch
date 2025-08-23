@@ -52,7 +52,7 @@ lab=out1}
 N 480 40 540 40 {
 lab=out1}
 N 620 0 620 10 {
-lab=Vss}
+lab=#net1}
 N 620 -80 620 -60 {
 lab=Vdd}
 N 550 80 550 150 {
@@ -67,22 +67,27 @@ N 700 210 700 230 {
 lab=Vss}
 N 620 100 620 120 {
 lab=Vdd}
-C {code.sym} -160 -110 0 0 {name=Sim_param only_toplevel=false value=
+C {code.sym} -10 -110 0 0 {name=Sim_param only_toplevel=false value=
 "
 .param Vdd   = 1.8
 .param VCM   = 0.9
 .param Vstep = 1m
 .param Vin2  = VCM-Vstep
+.ic V(out1) = 0
+.ic V(out2) = 0
+.ic V(x1.common) = 0
+.ic V(x1.P) = 0
+.ic V(x1.Q) = 0
 
 "}
 C {vsource.sym} -240 270 0 0 {name=Vdd value=\{Vdd\} savecurrent=false}
 C {gnd.sym} -240 320 0 0 {name=l1 lab=GND}
 C {lab_pin.sym} -240 220 0 0 {name=p1 sig_type=std_logic lab=Vdd}
 C {../sch/strongarm.sym} 340 -10 0 0 {name=x1}
-C {code.sym} -290 -110 0 0 {name=Modelos only_toplevel=false value="
+C {code.sym} -140 -110 0 0 {name=Modelos only_toplevel=false value="
 .lib cornerMOSlv.lib mos_tt
 "}
-C {code.sym} -30 -110 0 0 {name=MOS_param only_toplevel=false value="
+C {code.sym} -10 50 0 0 {name=MOS_param only_toplevel=false value="
 ** TRANSISTORES NMOS
 
 .param W12 = 1u
@@ -109,10 +114,6 @@ C {code.sym} -30 -110 0 0 {name=MOS_param only_toplevel=false value="
 .param Lab = 0.2u
 .param Mab = 1
 "}
-C {code.sym} -160 50 0 0 {name=Sim_amp spice_ignore=1
-only_toplevel=false value="
-"
-}
 C {vsource.sym} -150 270 0 0 {name=Vss value=0 savecurrent=false}
 C {gnd.sym} -150 320 0 0 {name=l2 lab=GND}
 C {lab_pin.sym} -150 220 0 0 {name=p2 sig_type=std_logic lab=Vss}
@@ -121,7 +122,7 @@ C {lab_pin.sym} 360 -40 0 0 {name=p4 sig_type=std_logic lab=Vdd}
 C {lab_pin.sym} 260 110 0 0 {name=p5 sig_type=std_logic lab=Vin2}
 C {lab_pin.sym} 260 10 0 0 {name=p6 sig_type=std_logic lab=Vin1}
 C {lab_pin.sym} 260 60 0 0 {name=p7 sig_type=std_logic lab=CLK}
-C {code.sym} -290 50 0 0 {name=tran_sim spice_ignore=0 only_toplevel=false value="
+C {code.sym} -130 50 0 0 {name=Tran_Sim spice_ignore=0 only_toplevel=false value="
 
 .param T = 10n
 .control
@@ -155,8 +156,8 @@ let ids1 = @n.x1.xm1.nsg13_lv_nmos[ids]
 let ids5 = @n.x1.xm5.nsg13_lv_pmos[ids]
 let ids8 = @n.x1.xm8.nsg13_lv_pmos[ids]
 
-meas tran Amp_t TRIG AT=15n TARG v(out1) VAL=0.6 CROSS=1
-meas tran reg_t TRIG v(out1) VAL=0.6 CROSS=1 TARG v(out1) VAL=0.01 CROSS=1
+meas tran Amp_t TRIG AT=15n TARG v(out1) VAL=0.9 CROSS=1
+meas tran reg_t TRIG v(out1) VAL=0.9 CROSS=1 TARG v(out1) VAL=0.01 CROSS=1
 meas tran Energy INTEG Pot from=15n to=25n
 *plot v(x1.Q) 
 *plot v(x1.test) 
@@ -176,7 +177,7 @@ value=10f
 footprint=1206
 device="ceramic capacitor"}
 C {lab_pin.sym} 620 200 0 0 {name=p8 sig_type=std_logic lab=Vss}
-C {lab_pin.sym} 620 10 0 0 {name=p9 sig_type=std_logic lab=Vss}
+C {lab_pin.sym} 940 -120 0 0 {name=p9 sig_type=std_logic lab=Vss}
 C {lab_pin.sym} 700 140 2 0 {name=p10 sig_type=std_logic lab=nout2}
 C {lab_pin.sym} 700 -40 2 0 {name=p11 sig_type=std_logic lab=nout1}
 C {vsource.sym} -50 270 0 0 {name=Vin1 value=\{VCM\} savecurrent=false}

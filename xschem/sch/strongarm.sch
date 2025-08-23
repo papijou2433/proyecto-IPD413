@@ -6,9 +6,9 @@ V {}
 S {}
 E {}
 N -90 -50 -90 -30 {
-lab=test}
+lab=Vcommon}
 N -0 -30 90 -30 {
-lab=test}
+lab=Vcommon}
 N 90 -130 90 -110 {
 lab=Q}
 N 90 -130 120 -130 {
@@ -70,7 +70,7 @@ lab=CLK}
 N 0 150 0 160 {
 lab=Vss}
 N 90 -50 90 -30 {
-lab=test}
+lab=Vcommon}
 N 50 100 50 150 {
 lab=Vss}
 N 50 -80 90 -80 {
@@ -128,9 +128,9 @@ lab=Vss}
 N -90 -80 50 -80 {
 lab=Vss}
 N -0 -30 -0 70 {
-lab=test}
+lab=Vcommon}
 N -90 -30 -0 -30 {
-lab=test}
+lab=Vcommon}
 N -170 -450 -110 -450 {
 lab=Vout2}
 N -170 -420 -110 -420 {
@@ -249,7 +249,7 @@ C {lab_pin.sym} -340 -320 2 1 {name=p12 sig_type=std_logic lab=CLK}
 C {lab_pin.sym} -340 -190 2 1 {name=p13 sig_type=std_logic lab=CLK}
 C {lab_pin.sym} -520 -190 2 1 {name=p19 sig_type=std_logic lab=CLK}
 C {lab_pin.sym} -60 100 2 1 {name=p20 sig_type=std_logic lab=CLK}
-C {lab_pin.sym} 0 -20 0 0 {name=p27 sig_type=std_logic lab=test
+C {lab_pin.sym} 0 -20 0 0 {name=p27 sig_type=std_logic lab=common
 }
 C {lab_pin.sym} -120 -250 0 0 {name=p28 sig_type=std_logic lab=Vop}
 C {lab_pin.sym} 120 -250 0 1 {name=p29 sig_type=std_logic lab=Voq}

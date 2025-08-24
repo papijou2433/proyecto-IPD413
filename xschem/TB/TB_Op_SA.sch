@@ -62,6 +62,7 @@ let id8 = @n.x1.xm8.nsg13_lv_pmos[ids]
 let gm3 = @n.x1.xm3.nsg13_lv_nmos[gm]
 let gm4 = @n.x1.xm4.nsg13_lv_nmos[gm]
 print id8 id3 id4
+print gm3 gm4
 .endc
 "}
 C {code.sym} -40 -110 0 0 {name=Sim_param only_toplevel=false value=
@@ -84,7 +85,8 @@ C {../sch/strongarm.sym} 300 -10 0 0 {name=x1}
 C {code.sym} -170 -110 0 0 {name=Modelos only_toplevel=false value="
 .lib cornerMOSlv.lib mos_tt
 "}
-C {code.sym} -40 50 0 0 {name=MOS_param only_toplevel=false value="
+C {code.sym} 430 -180 0 0 {name=MOS_param spice_ignore=1
+only_toplevel=false value="
 ** TRANSISTORES NMOS
 
 .param W12 = 5.3u
@@ -136,10 +138,37 @@ C {lab_pin.sym} -90 220 0 0 {name=p12 sig_type=std_logic lab=Vin1}
 C {vsource.sym} -10 270 0 0 {name=Vin2 value=\{Vin2\} savecurrent=false}
 C {gnd.sym} -10 320 0 0 {name=l4 lab=GND}
 C {lab_pin.sym} -10 220 0 0 {name=p13 sig_type=std_logic lab=in2}
-C {vsource.sym} 90 270 0 0 {name=Vclock value=dc=0.9 savecurrent=false}
+C {vsource.sym} 90 270 0 0 {name=Vclock value="dc=0.9  ac=10m" savecurrent=false}
 C {gnd.sym} 90 320 0 0 {name=l5 lab=GND}
 C {lab_pin.sym} 90 220 0 0 {name=p14 sig_type=std_logic lab=CLK}
 C {lab_pin.sym} 680 120 0 0 {name=p16 sig_type=std_logic lab=Vss}
 C {lab_pin.sym} 550 160 0 0 {name=p17 sig_type=std_logic lab=Vss}
 C {lab_pin.sym} 680 30 2 0 {name=p19 sig_type=std_logic lab=out1}
 C {lab_pin.sym} 550 80 2 0 {name=p20 sig_type=std_logic lab=out2}
+C {code.sym} -40 60 0 0 {name=MOS_param1 only_toplevel=false value="
+** TRANSISTORES NMOS
+
+.param W12 = 0.5u
+.param L12 = 0.13u
+.param M12 = 10
+
+.param W34 = 0.5u
+.param L34 = 0.13u
+.param M34 = 5
+
+.param W56 = 0.5u
+.param L56 = 0.13u
+.param M56 = 5
+
+.param W7  = 0.5u
+.param L7  = 0.13u
+.param M7  = 20
+
+.param W89 = 0.5u
+.param L89 = 0.13u
+.param M89 = 1
+
+.param Wab = 0.5u
+.param Lab = 0.13u
+.param Mab = 3
+"}

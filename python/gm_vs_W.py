@@ -27,7 +27,8 @@ for dataset in data:
 
 # Ejemplo: graficar curvas Id vs Vgs
 # j=0
-
+print(gm)
+print(W)
 fig, ax1 = plt.subplots(figsize=(8, 5))
 
 color1 = "tab:blue"

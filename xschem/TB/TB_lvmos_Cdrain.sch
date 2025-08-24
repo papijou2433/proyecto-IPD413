@@ -91,7 +91,7 @@ C {devices/lab_pin.sym} 2020 -1190 2 0 {name=p6 sig_type=std_logic lab=Nout
 C {devices/vsource.sym} 1740 -1160 0 0 {name=V4 value="PULSE (0 \{Vdd\} 0 1p 1p \{T/2\} \{T\})" savecurrent=false}
 C {code.sym} 1510 -1300 0 0 {name=Sim only_toplevel=false value="
 .control
-let strt_w = 1.0u
+let strt_w = 0.25u
 let stop_w = 10u
 let step_w = 0.1u
 let curr_w = 1.0u

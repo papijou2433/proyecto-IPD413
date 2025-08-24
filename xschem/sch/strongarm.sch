@@ -234,7 +234,7 @@ C {sg13g2_pr/sg13_lv_pmos.sym} 300 -320 2 0 {name=M11
 l=\{Lab\}
 w=\{Wab\}
 ng=1
-m=\{Wab\}
+m=\{Mab\}
 model=sg13_lv_pmos
 spiceprefix=X
 }
@@ -242,7 +242,7 @@ C {sg13g2_pr/sg13_lv_pmos.sym} -300 -320 2 1 {name=M10
 l=\{Lab\}
 w=\{Wab\}
 ng=1
-m=\{Wab\}
+m=\{Mab\}
 model=sg13_lv_pmos
 spiceprefix=X
 }

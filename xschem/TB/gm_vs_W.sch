@@ -51,14 +51,14 @@ end
 .endc
 "}
 C {sg13g2_pr/sg13_lv_nmos.sym} 190 -10 0 0 {name=M1
-l=0.2u
+l=0.13u
 w=\{W\}
 ng=1
 m=1
 model=sg13_lv_nmos
 spiceprefix=X
 }
-C {isource.sym} 210 60 0 0 {name=I0 value=39u}
+C {isource.sym} 210 60 0 0 {name=I0 value=100u}
 C {vsource.sym} 100 30 0 0 {name=V1 value=0.9 savecurrent=false}
 C {gnd.sym} 100 70 0 0 {name=l1 lab=GND}
 C {vsource.sym} 40 30 0 0 {name=V2 value=1.8 savecurrent=false}

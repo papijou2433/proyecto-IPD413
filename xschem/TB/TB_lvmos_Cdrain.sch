@@ -104,7 +104,7 @@ while curr_w le stop_w
 	meas tran tauP when v(Pout) = 1.138 CROSS=1
 	let Cn = tauN/(100k)
 	let Cp = tauP/(100k)
-	wrdata ../proyecto-IPD413/simulations/Cap_vs_Width.raw Cn Cp
+	wrdata ../proyecto-IPD413/simulations/Cap_vs_Width.raw Cn Cp curr_w
 	set appendwrite
 	let curr_w = curr_w + step_w
 end

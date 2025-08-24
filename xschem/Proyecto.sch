@@ -9,8 +9,8 @@ L 4 270 -440 270 -30 {}
 L 4 270 -30 620 -30 {}
 L 4 620 -440 620 -30 {}
 L 4 270 -440 620 -440 {}
-L 4 -180 -560 -180 -440 {}
-L 4 110 -560 110 -440 {}
+L 4 -180 -600 -180 -440 {}
+L 4 110 -600 110 -440 {}
 L 4 -180 -440 110 -440 {}
 L 4 -180 -440 -180 -160 {}
 L 4 -180 -160 110 -160 {}
@@ -18,7 +18,7 @@ L 4 110 -440 110 -160 {}
 L 4 -180 -160 -180 0 {}
 L 4 -180 0 110 0 {}
 L 4 110 -160 110 0 {}
-L 4 -180 -560 110 -560 {}
+L 4 -180 -600 110 -600 {}
 B 2 -170 -390 65 -329 {flags=image
 alpha=0.8
 image=/workspaces/usm-vlsi-tools/shared_xserver/proyecto-IPD413/xschem/eqtau.PNG
@@ -29,12 +29,11 @@ T {Ecuaciones:
 T {Especificaciones:
 } -170 -150 0 0 0.4 0.4 {}
 T {pJ/Op  <=
-fop       >=
+fop       >= 1[GHz]
 \\mu W <= 
 Cl           = 20fF
 } -160 -110 0 0 0.3 0.3 {}
-T {t_reg = Cx/(gm1(1-Cx/Cp))
-Av = gm1*rds1} -440 -240 0 0 0.3 0.3 {}
-C {TB/TB_Tran_SA.sym} -50 -470 0 0 {name=x1}
+C {TB/TB_Tran_SA.sym} -50 -560 0 0 {name=x1}
 C {title.sym} -200 130 0 0 {name=l1 author="Felipe Illanes - Sebastián Sánchez"}
-C {TB/TB_lvmos_Cdrain.sym} -40 -520 0 0 {name=x2}
+C {TB/TB_Op_SA.sym} -30 -520 0 0 {name=x2}
+C {sch/Extras.sym} -30 -460 0 0 {name=x3}

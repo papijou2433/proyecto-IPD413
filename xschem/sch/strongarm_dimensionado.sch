@@ -150,76 +150,76 @@ lab=Vout1}
 N -280 -290 -280 -220 {
 lab=Vout1}
 C {sg13g2_pr/sg13_lv_nmos.sym} -110 -80 2 1 {name=M1
-l=\{L12\}
-w=\{W12\}
-ng=\{F12\}
-m=\{M12\}
+l=0.5u
+w=2.5u
+ng=5
+m=8
 model=sg13_lv_nmos
 spiceprefix=X
 }
 C {sg13g2_pr/sg13_lv_nmos.sym} 110 -80 2 0 {name=M2
-l=\{L12\}
-w=\{W12\}
-ng=\{F12\}
-m=\{M12\}
+l=0.5u
+w=2.5u
+ng=5
+m=8
 model=sg13_lv_nmos
 spiceprefix=X
 }
 C {sg13g2_pr/sg13_lv_nmos.sym} -70 -180 2 0 {name=M3
-l=\{L34\}
-w=\{W34\}
-ng=\{F34\}
-m=\{M34\}
+l=0.13u
+w=4u
+ng=8
+m=1
 model=sg13_lv_nmos
 spiceprefix=X
 }
 C {sg13g2_pr/sg13_lv_nmos.sym} 70 -180 2 1 {name=M4
-l=\{L34\}
-w=\{W34\}
-ng=\{F34\}
-m=\{M34\}
+l=0.13u
+w=4u
+ng=8
+m=1
 model=sg13_lv_nmos
 spiceprefix=X
 }
 C {sg13g2_pr/sg13_lv_pmos.sym} 70 -320 0 0 {name=M6
-l=\{L56\}
-w=\{W56\}
-ng=\{F56\}
-m=\{M56\}
+l=0.13u
+w=3.5u
+ng=7
+m=1
 model=sg13_lv_pmos
 spiceprefix=X
 }
 C {sg13g2_pr/sg13_lv_pmos.sym} -70 -320 0 1 {name=M5
-l=\{L56\}
-w=\{W56\}
-ng=\{F56\}
-m=\{M56\}
+l=0.13u
+w=3.5u
+ng=7
+m=1
 model=sg13_lv_pmos
 spiceprefix=X
 }
 C {sg13g2_pr/sg13_lv_nmos.sym} -20 100 2 1 {name=M7
-l=\{L7\}
-w=\{W7\}
-ng=\{F7\}
-m=\{M7\}
+l=0.13u
+w=2.5u
+ng=5
+m=6
 model=sg13_lv_nmos
 spiceprefix=X
 }
 C {sg13g2_pr/sg13_lv_pmos.sym} -480 -320 0 0 {spice_ignore=0
 name=M8
-l=\{L89\}
-w=\{W89\}
-ng=\{F89\}
-m=\{M89\}
+l=0.13u
+w=3u
+ng=6
+m=1
 model=sg13_lv_pmos
 spiceprefix=X
 }
 C {sg13g2_pr/sg13_lv_pmos.sym} 480 -320 0 1 {spice_ignore=0
 name=M9
-l=\{L89\}
-w=\{W89\}
-ng=\{F89\}
-m=\{M89\}
+l=0.13u
+w=3u
+ng=6
+m=1
 model=sg13_lv_pmos
 spiceprefix=X
 }
@@ -231,18 +231,18 @@ C {ipin.sym} 160 -80 0 1 {name=p6 lab=Vin2}
 C {lab_pin.sym} -460 -130 0 0 {name=p14 sig_type=std_logic lab=P}
 C {lab_pin.sym} 460 -130 0 1 {name=p15 sig_type=std_logic lab=Q}
 C {sg13g2_pr/sg13_lv_pmos.sym} 300 -320 2 0 {name=M11
-l=\{Lab\}
-w=\{Wab\}
-ng=\{Fab\}
-m=\{Mab\}
+l=0.13u
+w=2u
+ng=4
+m=1
 model=sg13_lv_pmos
 spiceprefix=X
 }
 C {sg13g2_pr/sg13_lv_pmos.sym} -300 -320 2 1 {name=M10
-l=\{Lab\}
-w=\{Wab\}
-ng=\{Fab\}
-m=\{Mab\}
+l=0.13u
+w=2u
+ng=4
+m=1
 model=sg13_lv_pmos
 spiceprefix=X
 }

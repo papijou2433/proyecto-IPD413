@@ -28,10 +28,10 @@ T {Ecuaciones:
 } -160 -430 0 0 0.4 0.4 {}
 T {Especificaciones:
 } -170 -150 0 0 0.4 0.4 {}
-T {pJ/Op  <=
+T {pJ/Op    <= 1
 fop       >= 1[GHz]
-\\mu W <= 
-Cl           = 20fF
+\\mu W  <= 
+Cl           = 10fF
 } -160 -110 0 0 0.3 0.3 {}
 C {TB/TB_Tran_SA.sym} -50 -560 0 0 {name=x1}
 C {title.sym} -200 130 0 0 {name=l1 author="Felipe Illanes - Sebastián Sánchez"}

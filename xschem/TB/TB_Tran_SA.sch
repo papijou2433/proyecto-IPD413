@@ -57,7 +57,7 @@ C {code.sym} 0 -110 0 0 {name=Sim_param only_toplevel=false value=
 "
 .param Vdd   = 1.8
 .param VCM   = 0.9
-.param Vstep = 0.5m
+.param Vstep = 0.9
 .param Vin2  = VCM
 .ic V(out1) = 1.8
 .ic V(out2) = 1.8
@@ -175,7 +175,7 @@ meas tran id_peak3 MAX id3 from=200p to=600p
 meas tran id_peak4 MAX id4 from=200p to=600p
 meas tran id_peak5 MAX id5 from=200p to=600p
 meas tran id_peak6 MAX id6 from=200p to=600p
-meas tran id_peak7 MAX id7 from=200p to=600p
+meas tran id_peak7 MAX id7 from=200p to=400p
 meas tran id_peak8 MAX id8 from=200p to=600p
 meas tran id_peak9 MAX id9 from=200p to=600p
 meas tran id_peak10 MAX id10 from=200p to=600p
@@ -184,15 +184,15 @@ meas tran itot_max MAX i_tot from=200p to=600p
 
 meas tran id_avg1 AVG id1 from=200p to=600p
 meas tran id_avg2 AVG id2 from=200p to=600p
-meas tran id_avg3 AVG id3 from=200p to=600p
-meas tran id_avg4 AVG id4 from=200p to=600p
+meas tran id_avg3 AVG id3 from=400p to=600p
+meas tran id_avg4 AVG id4 from=200p to=400p
 meas tran id_avg5 AVG id5 from=200p to=600p
 meas tran id_avg6 AVG id6 from=200p to=600p
-meas tran id_avg7 AVG id7 from=200p to=600p
-meas tran id_avg8 AVG id8 from=200p to=600p
-meas tran id_avg9 AVG id9 from=200p to=600p
-meas tran id_avg10 AVG id10 from=200p to=600p
-meas tran id_avg11 AVG id11 from=200p to=600p
+meas tran id_avg7 AVG id7 from=200p to=400p
+meas tran id_avg8 AVG id8 from=400p to=600p
+meas tran id_avg9 AVG id9 from=400p to=600p
+meas tran id_avg10 AVG id10 from=400p to=600p
+meas tran id_avg11 AVG id11 from=400p to=600p
 meas tran itot_avg AVG i_tot from=200p to=600p
 
 meas tran Amp_t TRIG AT=200p TARG v(out2) VAL=0.9 CROSS=1
@@ -211,12 +211,12 @@ plot v(x1.Q) v(x1.P)
 C {capa.sym} 590 110 0 0 {spiceignore=1
 name=C1
 m=1
-value=20f
+value=10f
 footprint=1206
 device="ceramic capacitor"}
 C {capa.sym} 720 70 0 0 {name=C2
 m=1
-value=20f
+value=10f
 footprint=1206
 device="ceramic capacitor"}
 C {vsource.sym} -480 -10 0 0 {name=Vin1 value=\{VCM\} savecurrent=false}
@@ -253,20 +253,20 @@ C {code.sym} 10 50 0 0 {name=MOS_param_2.5GHz_fingers spice_ignore=0
 .param M56 = 1
 .param F56 = 7
 
-.param W7  = 2.5u
+.param W7  = 1u
 .param L7  = 0.13u
-.param M7  = 6
-.param F7  = 5
+.param M7  = 15
+.param F7  = 1
 
-.param W89 = 2u
+.param W89 = 1u
 .param L89 = 0.13u
-.param M89 = 1
-.param F89 = 4
+.param M89 = 2
+.param F89 = 1
 
-.param Wab = 3u
+.param Wab = 0.7u
 .param Lab = 0.13u
-.param Mab = 1
-.param Fab = 6
+.param Mab = 4
+.param Fab = 1
 "}
 C {ammeter.sym} 360 -70 0 0 {name=Vmeas savecurrent=true spice_ignore=0}
 C {code.sym} 10 -330 0 0 {name=MOS_param_1 spice_ignore=1

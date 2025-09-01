@@ -1,0 +1,6 @@
+** sch_path: /workspaces/usm-vlsi-tools/shared_xserver/proyecto-IPD413/klayout/LVS/Mab.sch
+.subckt Mab
+
+M1 XY CLK Vdd Vdd sg13_lv_pmos l=0.13u w=0.7u ng=1 m=4
+.ends
+.end

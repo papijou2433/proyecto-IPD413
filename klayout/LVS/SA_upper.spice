@@ -1,0 +1,9 @@
+** sch_path: /workspaces/usm-vlsi-tools/shared_xserver/proyecto-IPD413/klayout/LVS/SA_upper.sch
+.subckt SA_upper
+
+M1 Q Vout2 Vout1 Vss sg13_lv_nmos l=0.13u w=2.0u ng=2 m=4
+M2 Vout1 Vout2 Vdd Vdd sg13_lv_pmos l=0.13u w=3.5u ng=7 m=1
+M3 Vout1 CLK Vdd Vdd sg13_lv_pmos l=0.13u w=0.7u ng=1 m=4
+M4 Q CLK Vdd Vdd sg13_lv_pmos l=0.13u w=1.0u ng=1 m=2
+.ends
+.end

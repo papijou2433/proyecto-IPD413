@@ -73,7 +73,7 @@ value="
 .param temp=27
 .param M = 1
 .param W = 1u 
-.param L = 0.2u
+.param L = 0.13u
 "}
 C {devices/vsource.sym} 1740 -1420 0 0 {name=V3 value="PULSE (0 \{Vdd\} 0 1p 1p \{T/2\} \{T\})" savecurrent=false}
 C {devices/vsource.sym} 1920 -1350 0 0 {name=V1 value="1.2" savecurrent=false}
@@ -91,7 +91,7 @@ C {devices/lab_pin.sym} 2020 -1190 2 0 {name=p6 sig_type=std_logic lab=Nout
 C {devices/vsource.sym} 1740 -1160 0 0 {name=V4 value="PULSE (0 \{Vdd\} 0 1p 1p \{T/2\} \{T\})" savecurrent=false}
 C {code.sym} 1510 -1300 0 0 {name=Sim only_toplevel=false value="
 .control
-let strt_w = 0.25u
+let strt_w = 0.3u
 let stop_w = 10u
 let step_w = 0.1u
 let curr_w = 1.0u

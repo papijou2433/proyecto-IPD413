@@ -32,8 +32,10 @@ for dataset in data:
 # j=0
 derivadaP = (Cp[3] - Cp[2]) / (W[3] - W[2])
 derivadaN = (Cn[3] - Cn[2]) / (W[3] - W[2])
-print(derivadaN)
-print(derivadaP)
+print("Capacitancia min Nfet: ", Cn[0])
+print("\nCapacitancia min Pfet: ", Cp[0], "\n")
+print("Capacitancia min nodo XY = ", Cp[0] * 2 + Cn[0], "\n")
+print("Capacitancia min nodo PQ = ", Cn[0] * 2 + Cp[0], "\n")
 fig, ax1 = plt.subplots(figsize=(8, 5))
 
 color1 = "tab:blue"

@@ -5,23 +5,26 @@ K {}
 V {}
 S {}
 E {}
-N -30 10 60 10 {
-lab=xxx}
-N -30 -80 -30 -20 {
-lab=P}
-N -30 40 -30 90 {
+N -90 -20 -40 -20 {
+lab=Vin12}
+N 0 -70 0 -50 {
+lab=PQ}
+N -50 -70 0 -70 {
+lab=PQ}
+N 0 10 0 40 {
 lab=common}
-N -110 10 -70 10 {
-lab=Vin1}
-C {sg13g2_pr/sg13_lv_nmos.sym} -50 10 0 0 {name=M1
-l=0.45u
-w=1.0u
-ng=1
-m=1
+N -0 -20 90 -20 {
+lab=Vss}
+C {sg13g2_pr/sg13_lv_nmos.sym} -20 -20 0 0 {name=M1
+l=0.5u
+w=2.5u
+ng=5
+m=8
 model=sg13_lv_nmos
 spiceprefix=X
 }
-C {lab_pin.sym} -30 -80 0 0 {name=p1 sig_type=std_logic lab=P}
-C {lab_pin.sym} -110 10 0 0 {name=p2 sig_type=std_logic lab=Vin1}
-C {lab_pin.sym} 60 10 0 1 {name=p4 sig_type=std_logic lab=Vss}
-C {lab_pin.sym} -30 90 0 0 {name=p3 sig_type=std_logic lab=common}
+C {lab_pin.sym} 0 40 0 0 {name=p1 sig_type=std_logic lab=common}
+C {lab_pin.sym} -90 -20 0 0 {name=p2 sig_type=std_logic lab=Vin12}
+C {lab_pin.sym} -50 -70 0 0 {name=p3 sig_type=std_logic lab=PQ
+}
+C {lab_pin.sym} 90 -20 0 1 {name=p4 sig_type=std_logic lab=Vss}

@@ -5,7 +5,7 @@ from scipy.stats import linregress
 data = []
 i = 0
 file_path = "proyecto-IPD413/simulations/"
-file_name = "Cap_vs_Width.raw"
+file_name = "Cdrain_vs_Width.raw"
 file = file_path + file_name
 
 with open(file, "r") as f:
@@ -34,8 +34,9 @@ derivadaP = (Cp[3] - Cp[2]) / (W[3] - W[2])
 derivadaN = (Cn[3] - Cn[2]) / (W[3] - W[2])
 print("Capacitancia min Nfet: ", Cn[0])
 print("\nCapacitancia min Pfet: ", Cp[0], "\n")
-print("Capacitancia min nodo XY = ", Cp[0] * 2 + Cn[0], "\n")
-print("Capacitancia min nodo PQ = ", Cn[0] * 2 + Cp[0], "\n")
+
+print("Pendiente Nmos: ", derivadaN, "\n")
+print("Pendiente Pmos: ", derivadaP, "\n")
 fig, ax1 = plt.subplots(figsize=(8, 5))
 
 color1 = "tab:blue"
@@ -53,6 +54,6 @@ ax1.grid(True)
 
 
 # Add titles and layout
-plt.title("Cdrain vs Width with VDS=0.9[v]")
+plt.title("Cdrain vs Width")
 fig.tight_layout()
 plt.show()

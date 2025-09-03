@@ -21,10 +21,6 @@ N 260 60 280 60 {
 lab=CLK}
 N 260 10 280 10 {
 lab=Vin1}
-N 480 80 590 80 {
-lab=out2}
-N 720 100 720 120 {
-lab=Vss}
 N -480 20 -480 40 {
 lab=GND}
 N -480 260 -480 280 {
@@ -37,27 +33,46 @@ N -60 220 -60 240 {
 lab=CLK}
 N 360 -40 360 -10 {
 lab=#net1}
-N 720 30 720 40 {
-lab=out1}
-N 480 40 720 40 {
-lab=out1}
-N 590 140 590 160 {
-lab=Vss}
 N -480 180 -480 200 {
 lab=#net2}
-N 590 70 590 80 {
-lab=out2}
 N 360 -120 360 -100 {
 lab=Vdd}
 N -480 -60 -480 -40 {
 lab=#net3}
 N -480 -150 -480 -120 {
 lab=Vin1}
+N 850 60 920 60 {
+lab=out_latch}
+N 760 -60 760 -40 {
+lab=#net4}
+N 760 -130 760 -120 {
+lab=Vdd}
+N 760 150 760 170 {
+lab=Vss}
+N 590 20 590 40 {
+lab=out1}
+N 480 40 590 40 {
+lab=out1}
+N 590 60 590 80 {
+lab=out2}
+N 480 80 590 80 {
+lab=out2}
+N 670 80 670 90 {
+lab=out2}
+N 670 30 670 40 {
+lab=out1}
+N 590 40 670 40 {
+lab=out1}
+N 590 80 670 80 {
+lab=out2}
+N 920 120 920 150 {
+lab=Vss}
 C {code.sym} 0 -110 0 0 {name=Sim_param only_toplevel=false value=
 "
 .param Vdd   = 1.8
 .param VCM   = 0.9
 .param Vstep = 0.9
+*.param Vstep = 0.5m
 .param Vin2  = VCM
 .ic V(out1) = 1.8
 .ic V(out2) = 1.8
@@ -73,7 +88,7 @@ C {../sch/strongarm.sym} 340 -10 0 0 {name=x1 spice_ignore=0}
 C {code.sym} -130 -110 0 0 {name=Modelos only_toplevel=false value="
 .lib cornerMOSlv.lib mos_tt
 "}
-C {code.sym} 210 -330 0 0 {name=MOS_param_1GHZ spice_ignore=1
+C {code.sym} 10 -300 0 0 {name=MOS_param_1GHZ spice_ignore=1
  only_toplevel=false value="
 ** TRANSISTORES NMOS
 
@@ -167,7 +182,8 @@ let i_tot = i(vmeas)
 let rds1 = 1/@n.x1.xm1.nsg13_lv_nmos[gds]
 let rds2 = 1/@n.x1.xm2.nsg13_lv_nmos[gds]
 let rds7 = 1/@n.x1.xm7.nsg13_lv_nmos[gds]
-let Pot = i_tot*1.8
+let Pot_SA = i_tot*v(vdd)
+let Pot_SR = i(Vmeas1)*v(vdd)
 
 meas tran id_peak1 MAX id1 from=200p to=600p
 meas tran id_peak2 MAX id2 from=200p to=600p
@@ -197,9 +213,10 @@ meas tran itot_avg AVG i_tot from=200p to=600p
 
 meas tran Amp_t TRIG AT=200p TARG v(out2) VAL=0.9 CROSS=1
 meas tran reg_t TRIG v(out2) VAL=0.9  CROSS=1 TARG v(out2) VAL=0.01 CROSS=1
-meas tran Avg_Power AVG Pot from=200p to=600p
-meas tran Energy INTEG Pot from=200p to=400p
-meas tran Energy2 INTEG Pot from=200p to=600p
+meas tran Avg_Power AVG Pot_SA from=200p to=600p
+meas tran Avg_SR_pot AVG POT_SR from=200p to=600p
+*meas tran Energy INTEG Pot from=200p to=400p
+meas tran Energy INTEG Pot_SA from=200p to=600p
 * se mide de dos manetas la energía en medio ciclo y ciclo entero
 wrdata ../proyecto-IPD413/simulations/SA_tran_currents.raw id1 id2 id3 id4 id5 id6 id7 id8 id9 id10 id11 
 wrdata ../proyecto-IPD413/simulations/SA_tran_voltages.raw v(out1) v(out2) v(x1.P) x(x1.Q)
@@ -208,17 +225,6 @@ plot v(out1) v(out2) v(clk)+2
 plot v(x1.Q) v(x1.P)
 .endc
 "}
-C {capa.sym} 590 110 0 0 {spiceignore=1
-name=C1
-m=1
-value=10f
-footprint=1206
-device="ceramic capacitor"}
-C {capa.sym} 720 70 0 0 {name=C2
-m=1
-value=10f
-footprint=1206
-device="ceramic capacitor"}
 C {vsource.sym} -480 -10 0 0 {name=Vin1 value=\{VCM\} savecurrent=false}
 C {gnd.sym} -480 40 0 0 {name=l3 lab=GND}
 C {lab_pin.sym} -480 -150 0 0 {name=p12 sig_type=std_logic lab=Vin1}
@@ -228,12 +234,11 @@ C {lab_pin.sym} -480 90 0 0 {name=p13 sig_type=std_logic lab=in2}
 C {vsource.sym} -60 270 0 0 {name=Vclock value="PULSE(0 \{Vdd\} \{T/2\} \{T/20\} \{T/20\} \{T/2\} \{T\})" savecurrent=false}
 C {gnd.sym} -60 320 0 0 {name=l5 lab=GND}
 C {lab_pin.sym} -60 220 0 0 {name=p14 sig_type=std_logic lab=CLK}
-C {lab_pin.sym} 720 120 0 0 {name=p16 sig_type=std_logic lab=Vss}
-C {lab_pin.sym} 590 160 0 0 {name=p17 sig_type=std_logic lab=Vss}
-C {lab_pin.sym} 720 30 2 0 {name=p19 sig_type=std_logic lab=out1}
-C {lab_pin.sym} 590 70 2 0 {name=p20 sig_type=std_logic lab=out2}
+C {lab_pin.sym} 590 20 2 0 {name=p19 sig_type=std_logic lab=out1}
+C {lab_pin.sym} 590 60 2 0 {name=p20 sig_type=std_logic lab=out2}
 C {vsource.sym} -480 150 0 0 {name=Vstep value="PULSE(\{vstep\} \{-vstep\} \{T\} \{T/20\} \{T/20\} \{T\} \{2*T\})" savecurrent=false}
-C {code.sym} 10 50 0 0 {name=MOS_param_2.5GHz_fingers spice_ignore=0
+C {code.sym} 0 50 0 0 {name=MOS_param_2.5GHz_fingers spice_ignore=0
+
 
  only_toplevel=false value="
 ** TRANSISTORES NMOS
@@ -269,55 +274,86 @@ C {code.sym} 10 50 0 0 {name=MOS_param_2.5GHz_fingers spice_ignore=0
 .param Fab = 1
 "}
 C {ammeter.sym} 360 -70 0 0 {name=Vmeas savecurrent=true spice_ignore=0}
-C {code.sym} 10 -330 0 0 {name=MOS_param_1 spice_ignore=1
+C {vsource.sym} -480 -90 0 0 {name=Vstep1 value="PULSE(\{-vstep\} \{vstep\} \{T\} \{T/20\} \{T/20\} \{T\} \{2*T\})" savecurrent=false}
+C {code.sym} 170 -300 0 0 {name=MOS_param_1 spice_ignore=1
 
  only_toplevel=false value="
 ** TRANSISTORES NMOS
 
-.param W12 = 0.25u
-.param L12 = 0.5u
-.param M12 = 80
+.param W12 = 1u
+.param L12 = 0.13u
+.param M12 = 1
 .param F12 = 1
 
-.param W34 = 0.25u
+.param W34 = 0.3u
 .param L34 = 0.13u
-.param M34 = 15
+.param M34 = 1
 .param F34 = 1
 
-.param W56 = 0.25u
+.param W56 = 0.3u
 .param L56 = 0.13u
-.param M56 = 14
+.param M56 = 1
 .param F56 = 1
 
-.param W7  = 0.25u
+.param W7  = 3u
 .param L7  = 0.13u
-.param M7  = 60
+.param M7  = 1
 .param F7  = 1
 
-.param W89 = 0.25u
+.param W89 = 0.3u
 .param L89 = 0.13u
-.param M89 = 12
+.param M89 = 1
 .param F89 = 1
 
-.param Wab = 0.25u
+.param Wab = 0.3u
 .param Lab = 0.13u
-.param Mab = 9
+.param Mab = 1
 .param Fab = 1
 "}
-C {/workspaces/usm-vlsi-tools/shared_xserver/proyecto-IPD413/xschem/sch/strongarm_dimensionado.sym} 630 -250 0 0 {name=x2
-spice_ignore=1}
-C {code.sym} -140 -330 0 0 {name=Sim_param1 spice_ignore=1
- only_toplevel=false value=
-"
-.param Vdd   = 1.8
-.param VCM   = 0.9
-.param Vstep = 1m
-.param Vin2  = VCM-Vstep
-.ic V(out1) = 1.8
-.ic V(out2) = 1.8
-.ic V(x1.common) = 1.8
-.ic V(x1.P) = 1.8
-.ic V(x1.Q) = 1.8
+C {code.sym} -150 -300 0 0 {name=MOS_param_2 spice_ignore=1
 
+
+ only_toplevel=false value="
+** TRANSISTORES NMOS
+
+.param W12 = 2.5u
+.param L12 = 0.5u
+.param M12 = 6
+.param F12 = 5
+
+.param W34 = 2u
+.param L34 = 0.13u
+.param M34 = 2
+.param F34 = 2
+
+.param W56 = 3.0u
+.param L56 = 0.13u
+.param M56 = 1
+.param F56 = 7
+
+.param W7  = 1u
+.param L7  = 0.13u
+.param M7  = 10
+.param F7  = 1
+
+.param W89 = 1u
+.param L89 = 0.13u
+.param M89 = 1
+.param F89 = 1
+
+.param Wab = 0.7u
+.param Lab = 0.13u
+.param Mab = 3
+.param Fab = 1
 "}
-C {vsource.sym} -480 -90 0 0 {name=Vstep1 value="PULSE(\{-vstep\} \{vstep\} \{T\} \{T/20\} \{T/20\} \{T\} \{2*T\})" savecurrent=false}
+C {/workspaces/usm-vlsi-tools/shared_xserver/proyecto-IPD413/xschem/sch/inv_latch.sym} 760 60 0 0 {name=x2}
+C {ammeter.sym} 760 -90 0 0 {name=Vmeas1 savecurrent=true spice_ignore=0}
+C {lab_pin.sym} 760 -130 0 0 {name=p8 sig_type=std_logic lab=Vdd}
+C {lab_pin.sym} 760 170 0 0 {name=p9 sig_type=std_logic lab=Vss}
+C {lab_pin.sym} 920 60 2 0 {name=p10 sig_type=std_logic lab=out_latch}
+C {capa.sym} 920 90 0 0 {name=C1
+m=1
+value=10f
+footprint=1206
+device="ceramic capacitor"}
+C {lab_pin.sym} 920 150 0 0 {name=p11 sig_type=std_logic lab=Vss}

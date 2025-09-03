@@ -1,0 +1,10 @@
+* Extracted by KLayout with SG13G2 LVS runset on : 03/09/2025 01:57
+
+.SUBCKT SA_lower common CLK Vin1 Vin2 P Q Vss
+M$1 P Vin1 common Vss sg13_lv_nmos L=0.5u W=20u AS=4.4p AD=4.4p PS=41.6u
++ PD=41.6u
+M$41 Q Vin2 common Vss sg13_lv_nmos L=0.5u W=20u AS=4.4p AD=4.4p PS=41.6u
++ PD=41.6u
+M$81 Vss CLK common Vss sg13_lv_nmos L=0.13u W=15u AS=5.1p AD=5.1p PS=40.2u
++ PD=40.2u
+.ENDS SA_lower

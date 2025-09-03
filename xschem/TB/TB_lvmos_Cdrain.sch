@@ -15,17 +15,15 @@ N 2020 -1450 2020 -1420 {
 lab=Pout}
 N 1970 -1390 1980 -1390 {
 lab=#net1}
-N 1920 -1390 1920 -1380 {
+N 1910 -1390 1910 -1380 {
 lab=#net1}
-N 1920 -1320 1920 -1300 {
+N 1910 -1320 1910 -1300 {
 lab=GND}
 N 2020 -1390 2020 -1330 {
 lab=#net1}
 N 1970 -1330 2020 -1330 {
 lab=#net1}
 N 1970 -1390 1970 -1330 {
-lab=#net1}
-N 1920 -1390 1970 -1390 {
 lab=#net1}
 N 1740 -1130 1740 -1110 {
 lab=GND}
@@ -43,13 +41,15 @@ N 1970 -1130 1970 -1070 {
 lab=GND}
 N 2020 -1130 2020 -1070 {
 lab=GND}
+N 1910 -1390 1970 -1390 {
+lab=#net1}
 C {devices/res.sym} 1940 -1450 1 0 {name=R1
 value=\{R\}
 footprint=1206
 device=resistor
 m=1}
 C {devices/gnd.sym} 1740 -1370 0 0 {name=l4 lab=GND}
-C {devices/gnd.sym} 1920 -1300 0 0 {name=l5 lab=GND}
+C {devices/gnd.sym} 1910 -1300 0 0 {name=l5 lab=GND}
 C {devices/lab_pin.sym} 1880 -1450 1 0 {name=p3 sig_type=std_logic lab=vp
 }
 C {devices/lab_pin.sym} 2020 -1450 2 0 {name=p4 sig_type=std_logic lab=Pout
@@ -64,19 +64,19 @@ C {code.sym} 1510 -1440 0 0 {name=MOS_Param only_toplevel=false
 value="
 .param R = 100k
 .parameter T = 10n
-.param Vdd = 1.8
+.param Vdd = 1.0
 
-.ic v(Pout) = 0
+.ic v(Pout) = 1.0
 .ic v(Nout) = 0
 
 * MOS Param
 .param temp=27
 .param M = 1
-.param W = 1u 
+.param W = 0.3u 
 .param L = 0.13u
 "}
-C {devices/vsource.sym} 1740 -1420 0 0 {name=V3 value="PULSE (0 \{Vdd\} 0 1p 1p \{T/2\} \{T\})" savecurrent=false}
-C {devices/vsource.sym} 1920 -1350 0 0 {name=V1 value="1.2" savecurrent=false}
+C {devices/vsource.sym} 1740 -1420 0 0 {name=V3 value="PULSE (\{Vdd\} 0 0 1p 1p \{T/2\} \{T\})" savecurrent=false}
+C {devices/vsource.sym} 1910 -1350 0 0 {name=V1 value="\{Vdd\}" savecurrent=false}
 C {devices/res.sym} 1940 -1190 1 0 {name=R3
 value=\{R\}
 footprint=1206
@@ -94,17 +94,17 @@ C {code.sym} 1510 -1300 0 0 {name=Sim only_toplevel=false value="
 let strt_w = 0.3u
 let stop_w = 10u
 let step_w = 0.1u
-let curr_w = 1.0u
+let curr_w = 0.3u
 save all
 while curr_w le stop_w
 	alterparam W = $&curr_w
 	reset
 	tran 10p 2n
-	meas tran tauN when v(Nout) = 1.138 CROSS=1
-	meas tran tauP when v(Pout) = 1.138 CROSS=1
+	meas tran tauN when v(Nout) = 0.63 CROSS=1
+	meas tran tauP when v(Pout) = 0.37 CROSS=1
 	let Cn = tauN/(100k)
 	let Cp = tauP/(100k)
-	wrdata ../proyecto-IPD413/simulations/Cap_vs_Width.raw Cn Cp curr_w
+	wrdata ../proyecto-IPD413/simulations/Cdrain_vs_Width.raw Cn Cp curr_w
 	set appendwrite
 	let curr_w = curr_w + step_w
 end

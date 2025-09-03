@@ -1,0 +1,24 @@
+* Extracted by KLayout with SG13G2 LVS runset on : 03/09/2025 06:51
+
+.SUBCKT SA Vout1 P Q Vss Vout2 CLK Vdd Vin1 Vin2 common
+M$1 Vdd CLK P Vdd sg13_lv_pmos L=0.13u W=2u AS=0.68p AD=0.68p PS=5.36u PD=5.36u
+M$3 Vdd CLK Q Vdd sg13_lv_pmos L=0.13u W=2u AS=0.68p AD=0.68p PS=5.36u PD=5.36u
+M$5 Vdd Vout2 Vout1 Vdd sg13_lv_pmos L=0.13u W=3.5u AS=0.74p AD=0.74p PS=6.96u
++ PD=6.96u
+M$12 Vdd Vout1 Vout2 Vdd sg13_lv_pmos L=0.13u W=3.5u AS=0.74p AD=0.74p PS=6.96u
++ PD=6.96u
+M$19 Vdd CLK Vout1 Vdd sg13_lv_pmos L=0.13u W=2.8u AS=0.952p AD=0.952p PS=8.32u
++ PD=8.32u
+M$23 Vdd CLK Vout2 Vdd sg13_lv_pmos L=0.13u W=2.8u AS=0.952p AD=0.952p PS=8.32u
++ PD=8.32u
+M$27 P Vout2 Vout1 Vss sg13_lv_nmos L=0.13u W=8u AS=2.12p AD=2.12p PS=16.24u
++ PD=16.24u
+M$35 Q Vout1 Vout2 Vss sg13_lv_nmos L=0.13u W=8u AS=2.12p AD=2.12p PS=16.24u
++ PD=16.24u
+M$43 Q Vin2 common Vss sg13_lv_nmos L=0.5u W=20u AS=4.4p AD=4.4p PS=41.6u
++ PD=41.6u
+M$83 P Vin1 common Vss sg13_lv_nmos L=0.5u W=20u AS=4.4p AD=4.4p PS=41.6u
++ PD=41.6u
+M$123 Vss CLK common Vss sg13_lv_nmos L=0.13u W=15u AS=5.1p AD=5.1p PS=40.2u
++ PD=40.2u
+.ENDS SA

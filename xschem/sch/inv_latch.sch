@@ -44,7 +44,7 @@ lab=Vss}
 N -310 220 -240 220 {
 lab=#net3}
 N -430 220 -390 220 {
-lab=Vin1}
+lab=Vin2}
 N -350 250 -350 270 {
 lab=Vss}
 N -350 160 -350 190 {
@@ -63,7 +63,7 @@ C {ipin.sym} 0 150 2 1 {name=p4 lab=Vdd}
 C {ipin.sym} -430 60 0 0 {name=p5 lab=Vin1}
 C {sg13g2_pr/sg13_lv_nmos.sym} -220 60 0 0 {name=M1
 l=0.13u
-w=1.0u
+w=1.5u
 ng=1
 m=1
 model=sg13_lv_nmos
@@ -78,7 +78,7 @@ C {ipin.sym} -350 160 0 0 {name=p6 lab=Vdd}
 C {ipin.sym} -430 220 0 0 {name=p10 lab=Vin2}
 C {sg13g2_pr/sg13_lv_nmos.sym} -220 220 0 0 {name=M2
 l=0.13u
-w=1.0u
+w=1.5u
 ng=1
 m=1
 model=sg13_lv_nmos

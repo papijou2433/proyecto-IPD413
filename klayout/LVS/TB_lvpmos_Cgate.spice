@@ -1,0 +1,58 @@
+** sch_path: /workspaces/usm-vlsi-tools/shared_xserver/proyecto-IPD413/xschem/TB/TB_lvpmos_Cgate.sch
+.subckt TB_lvpmos_Cgate
+
+R1 Pout vp {R} m=1
+V3 vp GND PULSE (1 0 0 1p 1p {T/2} {T})
+V1 net1 GND 1
+R3 Nout vn {R} m=1
+V4 vn GND PULSE (0 1 0 1p 1p {T/2} {T})
+M3 GND Nout GND GND sg13_lv_nmos w={W} l={L} ng=1 m={M}
+M1 net1 Pout net1 net1 sg13_lv_pmos w={W} l={L} ng=1 m={M}
+**** begin user architecture code
+
+.lib cornerMOSlv.lib mos_tt
+
+
+
+.param R = 100k
+.parameter T = 10n
+.param Vdd = 1
+
+.ic v(Pout) = 1
+.ic v(Nout) = 0
+
+* MOS Param
+.param temp=27
+.param M = 1
+.param W = 1u
+.param L = 0.13u
+
+
+
+
+.control
+let strt_w = 0.3u
+let stop_w = 10u
+let step_w = 0.1u
+let curr_w = 1.0u
+save all
+while curr_w le stop_w
+	alterparam W = $&curr_w
+	reset
+	tran 10p 2n
+	meas tran tauN when v(Nout) = 0.63 CROSS=1
+	meas tran tauP when v(Pout) = 0.37 CROSS=1
+	let Cn = tauN/(100k)
+	let Cp = tauP/(100k)
+	wrdata ../proyecto-IPD413/simulations/Cgate_vs_Width.raw Cn Cp curr_w
+	set appendwrite
+	let curr_w = curr_w + step_w
+end
+plot v(Nout)
+.endc
+
+
+**** end user architecture code
+.ends
+.GLOBAL GND
+.end

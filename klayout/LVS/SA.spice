@@ -1,0 +1,16 @@
+** sch_path: /workspaces/usm-vlsi-tools/shared_xserver/proyecto-IPD413/klayout/LVS/SA.sch
+.subckt SA Vout2 Vout1
+*.PININFO Vout2:O Vout1:O
+M4 Q Vout1 Vout2 Vss sg13_lv_nmos l=0.13u w=2.0u ng=2 m=4
+M6 Vout2 Vout1 Vdd Vdd sg13_lv_pmos l=0.13u w=3.5u ng=7 m=1
+M11 Vout2 CLK Vdd Vdd sg13_lv_pmos l=0.13u w=0.7u ng=1 m=4
+M9 Q CLK Vdd Vdd sg13_lv_pmos l=0.13u w=1.0u ng=1 m=2
+M3 P Vout2 Vout1 Vss sg13_lv_nmos l=0.13u w=2.0u ng=2 m=4
+M5 Vout1 Vout2 Vdd Vdd sg13_lv_pmos l=0.13u w=3.5u ng=7 m=1
+M10 Vout1 CLK Vdd Vdd sg13_lv_pmos l=0.13u w=0.7u ng=1 m=4
+M8 P CLK Vdd Vdd sg13_lv_pmos l=0.13u w=1.0u ng=1 m=2
+M1 P Vin1 common Vss sg13_lv_nmos l=0.5u w=2.5u ng=5 m=8
+M2 Vss CLK common Vss sg13_lv_nmos l=0.13u w=1.0u ng=1 m=15
+M7 Q Vin2 common Vss sg13_lv_nmos l=0.5u w=2.5u ng=5 m=8
+.ends
+.end

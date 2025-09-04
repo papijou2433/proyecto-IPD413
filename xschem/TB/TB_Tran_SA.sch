@@ -155,7 +155,7 @@ save all
 + @n.x1.xm2.nsg13_lv_nmos[gds]
 + @n.x1.xm7.nsg13_lv_nmos[gds]
 
-tran 0.1p 1.2n
+tran 0.1p 2n
 let vgs3 = @n.x1.xm3.nsg13_lv_nmos[vgs]
 let vgs4 = @n.x1.xm4.nsg13_lv_nmos[vgs]
 let vgs5 = @n.x1.xm5.nsg13_lv_pmos[vgs]
@@ -213,16 +213,21 @@ meas tran itot_avg AVG i_tot from=200p to=600p
 
 meas tran Amp_t TRIG AT=200p TARG v(out2) VAL=0.9 CROSS=1
 meas tran reg_t TRIG v(out2) VAL=0.9  CROSS=1 TARG v(out2) VAL=0.01 CROSS=1
+meas tran tp_lh TRIG v(clk) VAL=0.9 RISE=2 TARG v(out_latch) VAL=0.9 RISE=1
+meas tran tp_hl TRIG v(clk) VAL=0.9 RISE=3 TARG v(out_latch) VAL=0.9 FALL=2
 meas tran Avg_Power AVG Pot_SA from=200p to=600p
 meas tran Avg_SR_pot AVG POT_SR from=200p to=600p
 *meas tran Energy INTEG Pot from=200p to=400p
 meas tran Energy INTEG Pot_SA from=200p to=600p
 * se mide de dos manetas la energía en medio ciclo y ciclo entero
+
+let tp = (tp_lh+tp_hl)/2
+print tp
 wrdata ../proyecto-IPD413/simulations/SA_tran_currents.raw id1 id2 id3 id4 id5 id6 id7 id8 id9 id10 id11 
 wrdata ../proyecto-IPD413/simulations/SA_tran_voltages.raw v(out1) v(out2) v(x1.P) x(x1.Q)
 plot v(Vin1) v(in2) 
 plot v(out1) v(out2) v(clk)+2 
-plot v(x1.Q) v(x1.P)
+plot v(clk) v(out_latch)
 .endc
 "}
 C {vsource.sym} -480 -10 0 0 {name=Vin1 value=\{VCM\} savecurrent=false}
@@ -346,7 +351,7 @@ C {code.sym} -150 -300 0 0 {name=MOS_param_2 spice_ignore=1
 .param Mab = 3
 .param Fab = 1
 "}
-C {/workspaces/usm-vlsi-tools/shared_xserver/proyecto-IPD413/xschem/sch/inv_latch.sym} 760 60 0 0 {name=x2}
+C {../sch/inv_latch.sym} 760 60 0 0 {name=x2}
 C {ammeter.sym} 760 -90 0 0 {name=Vmeas1 savecurrent=true spice_ignore=0}
 C {lab_pin.sym} 760 -130 0 0 {name=p8 sig_type=std_logic lab=Vdd}
 C {lab_pin.sym} 760 170 0 0 {name=p9 sig_type=std_logic lab=Vss}

@@ -15,36 +15,34 @@ N -110 -290 -110 -250 {
 lab=P}
 N -110 -310 -110 -290 {
 lab=P}
-N -110 -380 -110 -370 {
-lab=Vout1}
 N 70 -410 70 -370 {
-lab=Vout2}
+lab=SA_O2}
 N -70 -340 -50 -340 {
-lab=Vout2}
+lab=SA_O2}
 N 10 -480 30 -480 {
-lab=Vout1}
+lab=SA_O1}
 N -110 -450 -110 -410 {
-lab=Vout1}
+lab=SA_O1}
 N -60 -410 10 -480 {
-lab=Vout1}
+lab=SA_O1}
 N -110 -410 -60 -410 {
-lab=Vout1}
+lab=SA_O1}
 N -60 -410 10 -340 {
-lab=Vout1}
+lab=SA_O1}
 N 10 -340 30 -340 {
-lab=Vout1}
+lab=SA_O1}
 N -50 -340 20 -410 {
-lab=Vout2}
+lab=SA_O2}
 N 20 -410 70 -410 {
-lab=Vout2}
+lab=SA_O2}
 N 70 -450 70 -410 {
-lab=Vout2}
+lab=SA_O2}
 N -50 -480 20 -410 {
-lab=Vout2}
+lab=SA_O2}
 N -70 -480 -50 -480 {
-lab=Vout2}
+lab=SA_O2}
 N 70 -410 260 -410 {
-lab=Vout2}
+lab=SA_O2}
 N 70 -510 70 -480 {
 lab=Vdd}
 N -110 -530 70 -530 {
@@ -67,14 +65,14 @@ N 300 -480 320 -480 {
 lab=CLK}
 N 100 -530 260 -530 {
 lab=Vdd}
-N -300 -380 -110 -380 {
-lab=Vout1}
+N -300 -410 -110 -410 {
+lab=SA_O1}
 N 260 -530 440 -530 {
 lab=Vdd}
 N -480 -290 -110 -290 {
 lab=P}
 N 260 -450 260 -410 {
-lab=Vout2}
+lab=SA_O2}
 N 260 -530 260 -480 {
 lab=Vdd}
 N -140 -510 -110 -510 {
@@ -107,10 +105,8 @@ N 440 -450 440 -290 {
 lab=Q}
 N 480 -480 500 -480 {
 lab=CLK}
-N -110 -410 -110 -380 {
-lab=Vout1}
-N -300 -450 -300 -380 {
-lab=Vout1}
+N -110 -410 -110 -370 {
+lab=SA_O1}
 N -30 -170 -30 -140 {
 lab=common}
 N -180 -220 -150 -220 {
@@ -135,6 +131,18 @@ N -30 -260 -30 -220 {
 lab=Vss}
 N -110 -220 -30 -220 {
 lab=Vss}
+N 1050 -310 1100 -310 {
+lab=Vdd}
+N 960 -210 960 -180 {
+lab=Vss}
+N 960 -440 960 -410 {
+lab=Vdd}
+N 820 -340 870 -340 {
+lab=SA_O1}
+N 820 -280 870 -280 {
+lab=SA_O2}
+N -300 -450 -300 -410 {
+lab=SA_O1}
 C {sg13g2_pr/sg13_lv_nmos.sym} 50 -340 0 0 {name=M4
 l=0.13u
 w=2.0u
@@ -199,9 +207,6 @@ m=2
 model=sg13_lv_pmos
 spiceprefix=X
 }
-C {opin.sym} 260 -410 0 0 {name=p10 lab=Vout2
-}
-C {opin.sym} -300 -380 2 0 {name=p11 lab=Vout1}
 C {lab_pin.sym} -480 -290 0 0 {name=p14 sig_type=std_logic lab=P}
 C {lab_pin.sym} 440 -290 0 1 {name=p15 sig_type=std_logic lab=Q}
 C {lab_pin.sym} 140 -340 2 0 {name=p12 sig_type=std_logic lab=Vss}
@@ -241,3 +246,11 @@ m=8
 model=sg13_lv_nmos
 spiceprefix=X
 }
+C {/workspaces/usm-vlsi-tools/shared_xserver/proyecto-IPD413/xschem/sch/inv_latch.sym} 960 -310 0 0 {name=x2}
+C {lab_pin.sym} 960 -180 0 0 {name=p2 sig_type=std_logic lab=Vss}
+C {lab_pin.sym} 960 -440 0 0 {name=p3 sig_type=std_logic lab=Vdd}
+C {lab_pin.sym} 820 -340 0 0 {name=p9 sig_type=std_logic lab=SA_O1}
+C {lab_pin.sym} 820 -280 0 0 {name=p18 sig_type=std_logic lab=SA_O2}
+C {lab_pin.sym} 260 -410 0 1 {name=p10 sig_type=std_logic lab=SA_O2}
+C {lab_pin.sym} -300 -410 0 0 {name=p11 sig_type=std_logic lab=SA_O1}
+C {lab_pin.sym} 1100 -310 0 1 {name=p22 sig_type=std_logic lab=OUT_Latch}

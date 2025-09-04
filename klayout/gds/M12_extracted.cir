@@ -1,0 +1,6 @@
+* Extracted by KLayout with SG13G2 LVS runset on : 01/09/2025 02:25
+
+.SUBCKT M12 Vin12 common PQ Vss
+M$1 PQ Vin12 common Vss sg13_lv_nmos L=0.5u W=20u AS=4.4p AD=4.4p PS=41.6u
++ PD=41.6u
+.ENDS M12

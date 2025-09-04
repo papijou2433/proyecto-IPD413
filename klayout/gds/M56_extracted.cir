@@ -1,0 +1,6 @@
+* Extracted by KLayout with SG13G2 LVS runset on : 01/09/2025 03:09
+
+.SUBCKT M56 Vdd XY YX
+M$1 Vdd XY YX Vdd sg13_lv_pmos L=0.13u W=3.5u AS=0.74p AD=0.74p PS=6.96u
++ PD=6.96u
+.ENDS M56

@@ -1,0 +1,8 @@
+** sch_path: /workspaces/usm-vlsi-tools/shared_xserver/proyecto-IPD413/klayout/LVS/SA_lower.sch
+.subckt SA_lower
+
+M1 P Vin1 common Vss sg13_lv_nmos w=2.5u l=0.5u ng=5 m=8
+M3 Vss CLK common Vss sg13_lv_nmos w=1.0u l=0.13u ng=1 m=15
+M2 Q Vin2 common Vss sg13_lv_nmos w=2.5u l=0.5u ng=5 m=8
+.ends
+.end

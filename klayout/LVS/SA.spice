@@ -1,0 +1,41 @@
+** sch_path: /workspaces/usm-vlsi-tools/shared_xserver/proyecto-IPD413/klayout/LVS/SA._LATCHsch
+.subckt SA
+
+M4 Q SA_O1 SA_O2 Vss sg13_lv_nmos l=0.13u w=2.0u ng=2 m=4
+M6 SA_O2 SA_O1 Vdd Vdd sg13_lv_pmos l=0.13u w=3.5u ng=7 m=1
+M11 SA_O2 CLK Vdd Vdd sg13_lv_pmos l=0.13u w=0.7u ng=1 m=4
+M9 Q CLK Vdd Vdd sg13_lv_pmos l=0.13u w=1.0u ng=1 m=2
+M3 P SA_O2 SA_O1 Vss sg13_lv_nmos l=0.13u w=2.0u ng=2 m=4
+M5 SA_O1 SA_O2 Vdd Vdd sg13_lv_pmos l=0.13u w=3.5u ng=7 m=1
+M10 SA_O1 CLK Vdd Vdd sg13_lv_pmos l=0.13u w=0.7u ng=1 m=4
+M8 P CLK Vdd Vdd sg13_lv_pmos l=0.13u w=1.0u ng=1 m=2
+M1 P Vin1 common Vss sg13_lv_nmos l=0.5u w=2.5u ng=5 m=8
+M2 Vss CLK common Vss sg13_lv_nmos l=0.13u w=1.0u ng=1 m=15
+M7 Q Vin2 common Vss sg13_lv_nmos l=0.5u w=2.5u ng=5 m=8
+x2 Vdd OUT_Latch Vss SA_O1 SA_O2 inv_latch
+.ends
+
+* expanding   symbol:  /workspaces/usm-vlsi-tools/shared_xserver/proyecto-IPD413/xschem/sch/inv_latch.sym # of pins=5
+** sym_path: /workspaces/usm-vlsi-tools/shared_xserver/proyecto-IPD413/xschem/sch/inv_latch.sym
+** sch_path: /workspaces/usm-vlsi-tools/shared_xserver/proyecto-IPD413/xschem/sch/inv_latch.sch
+.subckt inv_latch Vdd Vout Vss Vin1 Vin2
+*.PININFO Vout:O Vdd:I Vdd:I Vin1:I Vss:I Vss:I Vdd:I Vss:I Vdd:I Vin2:I Vss:I Vss:I
+x1 net1 Vout Vdd Vss inv_lv
+x2 Vout net1 Vdd Vss inv_lv
+M1 Vss net2 net1 Vss sg13_lv_nmos l=0.13u w=1.5u ng=1 m=1
+x3 Vin1 net2 Vdd Vss inv_lv
+M2 Vss net3 Vout Vss sg13_lv_nmos l=0.13u w=1.5u ng=1 m=1
+x4 Vin2 net3 Vdd Vss inv_lv
+.ends
+
+
+* expanding   symbol:  /workspaces/usm-vlsi-tools/shared_xserver/proyecto-IPD413/xschem/sch/inv_lv.sym # of pins=4
+** sym_path: /workspaces/usm-vlsi-tools/shared_xserver/proyecto-IPD413/xschem/sch/inv_lv.sym
+** sch_path: /workspaces/usm-vlsi-tools/shared_xserver/proyecto-IPD413/xschem/sch/inv_lv.sch
+.subckt inv_lv Vin Vout Vdd Vss
+*.PININFO Vdd:I Vss:I Vin:I Vout:O
+M1 Vout Vin Vss Vss sg13_lv_nmos l=0.13u w=1u ng=1 m=1
+M2 Vout Vin Vdd Vdd sg13_lv_pmos l=0.13u w=2.3u ng=1 m=1
+.ends
+
+.end

@@ -1,0 +1,6 @@
+** sch_path: /workspaces/usm-vlsi-tools/shared_xserver/proyecto-IPD413/klayout/LVS/M89.sch
+.subckt M89
+
+M1 PQ CLK Vdd Vdd sg13_lv_pmos l=0.13u w=1u ng=1 m=2
+.ends
+.end

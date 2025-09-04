@@ -1,0 +1,6 @@
+** sch_path: /workspaces/usm-vlsi-tools/shared_xserver/proyecto-IPD413/klayout/LVS/M34.sch
+.subckt M34
+
+M1 XY YX PQ Vss sg13_lv_nmos l=0.13u w=2.0u ng=2 m=4
+.ends
+.end

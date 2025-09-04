@@ -1,0 +1,57 @@
+** sch_path: /workspaces/usm-vlsi-tools/shared_xserver/proyecto-IPD413/xschem/TB/TB_lvNMOS_cgate_ext.sch
+.subckt TB_lvNMOS_cgate_ext
+
+R1 VOUT VIN 1k m=1
+R2 VOUT_C VIN_C 1k m=1
+V2 VIN_C GND PULSE (0 1 0 1p 1p {T/2} {T})
+C1 VOUT_C GND {Co} m=1
+V3 VIN GND PULSE (0 1 0 1p 1p {T/2} {T})
+M1 GND VOUT GND GND sg13_lv_nmos w=0.5u l=0.13u ng=1 m=1
+**** begin user architecture code
+
+.lib cornerMOSlv.lib mos_tt
+
+
+
+.param T = 7n
+.param Co = 50p
+
+.tran 1p {T}
+.save all
+.ic v(vout) = 0
+.ic v(vout_c) = 0
+
+.control
+run
+meas tran teval WHEN v(vout) = 0.63
+let res_val = 1000
+let cap_val = teval/res_val
+plot v(vin) v(vout) v(vout_c)
+print cap_val
+.endc
+
+
+
+
+*M1 hvPMOS
+.param temp=27
+.param mult_M1 = 12000
+.param w_M1 =10u
+.param l_M1 = 0.4u
+.param ng_M1 = 1
+
+*M2 hvNMOS
+.param mult_M2 = 4000
+.param w_M2 =10u
+.param l_M2 =0.45u
+.param ng_M2 =1
+
+
+
+
+
+
+**** end user architecture code
+.ends
+.GLOBAL GND
+.end

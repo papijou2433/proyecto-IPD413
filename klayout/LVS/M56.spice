@@ -1,0 +1,6 @@
+** sch_path: /workspaces/usm-vlsi-tools/shared_xserver/proyecto-IPD413/klayout/LVS/M56.sch
+.subckt M56
+
+M1 YX XY Vdd Vdd sg13_lv_pmos l=0.13u w=3.5u ng=7 m=1
+.ends
+.end

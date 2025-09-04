@@ -1,0 +1,11 @@
+* Extracted by KLayout with SG13G2 LVS runset on : 01/09/2025 23:38
+
+.SUBCKT SA_upper Vdd Q Vout2 CLK Vout1
+M$1 Vdd CLK Q Vdd sg13_lv_pmos L=0.13u W=2u AS=0.68p AD=0.68p PS=5.36u PD=5.36u
+M$3 Vdd Vout2 Vout1 Vdd sg13_lv_pmos L=0.13u W=3.5u AS=0.74p AD=0.74p PS=6.96u
++ PD=6.96u
+M$10 Vdd CLK Vout1 Vdd sg13_lv_pmos L=0.13u W=2.8u AS=0.952p AD=0.952p PS=8.32u
++ PD=8.32u
+M$14 Q Vout2 Vout1 \$1 sg13_lv_nmos L=0.13u W=8u AS=2.12p AD=2.12p PS=16.24u
++ PD=16.24u
+.ENDS SA_upper

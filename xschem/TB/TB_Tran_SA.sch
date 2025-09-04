@@ -16,184 +16,349 @@ lab=Vss}
 N 360 130 360 150 {
 lab=Vss}
 N 260 110 280 110 {
-lab=Vin2}
+lab=in2}
 N 260 60 280 60 {
 lab=CLK}
 N 260 10 280 10 {
 lab=Vin1}
-N 480 80 550 80 {
-lab=out2}
-N 620 180 620 200 {
-lab=Vss}
-N 700 30 700 50 {
-lab=Vss}
-N -50 300 -50 320 {
+N -480 20 -480 40 {
 lab=GND}
-N -50 220 -50 240 {
-lab=Vin1}
-N 60 300 60 320 {
+N -480 260 -480 280 {
 lab=GND}
-N 60 220 60 240 {
-lab=Vin2}
-N 230 300 230 320 {
+N -480 90 -480 120 {
+lab=in2}
+N -60 300 -60 320 {
 lab=GND}
-N 230 220 230 240 {
+N -60 220 -60 240 {
 lab=CLK}
 N 360 -40 360 -10 {
-lab=Vdd}
-N 660 -30 700 -30 {
-lab=nout1}
-N 700 -40 700 -30 {
-lab=nout1}
-N 540 -30 580 -30 {
-lab=out1}
-N 540 -30 540 40 {
-lab=out1}
-N 480 40 540 40 {
-lab=out1}
-N 620 0 620 10 {
 lab=#net1}
-N 620 -80 620 -60 {
+N -480 180 -480 200 {
+lab=#net2}
+N 360 -120 360 -100 {
 lab=Vdd}
-N 550 80 550 150 {
-lab=out2}
-N 550 150 580 150 {
-lab=out2}
-N 660 150 700 150 {
-lab=nout2}
-N 700 140 700 150 {
-lab=nout2}
-N 700 210 700 230 {
+N -480 -60 -480 -40 {
+lab=#net3}
+N -480 -150 -480 -120 {
+lab=Vin1}
+N 850 60 920 60 {
+lab=out_latch}
+N 760 -60 760 -40 {
+lab=#net4}
+N 760 -130 760 -120 {
+lab=Vdd}
+N 760 150 760 170 {
 lab=Vss}
-N 620 100 620 120 {
-lab=Vdd}
-C {code.sym} -10 -110 0 0 {name=Sim_param only_toplevel=false value=
+N 590 20 590 40 {
+lab=out1}
+N 480 40 590 40 {
+lab=out1}
+N 590 60 590 80 {
+lab=out2}
+N 480 80 590 80 {
+lab=out2}
+N 670 80 670 90 {
+lab=out2}
+N 670 30 670 40 {
+lab=out1}
+N 590 40 670 40 {
+lab=out1}
+N 590 80 670 80 {
+lab=out2}
+N 920 120 920 150 {
+lab=Vss}
+C {code.sym} 0 -110 0 0 {name=Sim_param only_toplevel=false value=
 "
 .param Vdd   = 1.8
 .param VCM   = 0.9
-.param Vstep = 1m
-.param Vin2  = VCM-Vstep
-.ic V(out1) = 0
-.ic V(out2) = 0
-.ic V(x1.common) = 0
-.ic V(x1.P) = 0
-.ic V(x1.Q) = 0
+.param Vstep = 0.9
+*.param Vstep = 0.5m
+.param Vin2  = VCM
+.ic V(out1) = 1.8
+.ic V(out2) = 1.8
+.ic V(x1.common) = 1.8
+.ic V(x1.P) = 1.8
+.ic V(x1.Q) = 1.8
 
 "}
 C {vsource.sym} -240 270 0 0 {name=Vdd value=\{Vdd\} savecurrent=false}
 C {gnd.sym} -240 320 0 0 {name=l1 lab=GND}
 C {lab_pin.sym} -240 220 0 0 {name=p1 sig_type=std_logic lab=Vdd}
-C {../sch/strongarm.sym} 340 -10 0 0 {name=x1}
-C {code.sym} -140 -110 0 0 {name=Modelos only_toplevel=false value="
+C {../sch/strongarm.sym} 340 -10 0 0 {name=x1 spice_ignore=0}
+C {code.sym} -130 -110 0 0 {name=Modelos only_toplevel=false value="
 .lib cornerMOSlv.lib mos_tt
 "}
-C {code.sym} -10 50 0 0 {name=MOS_param only_toplevel=false value="
+C {code.sym} 10 -300 0 0 {name=MOS_param_1GHZ spice_ignore=1
+ only_toplevel=false value="
 ** TRANSISTORES NMOS
 
-.param W12 = 1u
-.param L12 = 0.2u
-.param M12 = 1
+.param W12 = 0.25u
+.param L12 = 0.13u
+.param M12 = 6
 
-.param W34 = 1u
-.param L34 = 0.2u
-.param M34 = 1
+.param W34 = 0.25u
+.param L34 = 0.13u
+.param M34 = 5
 
-.param W56 = 1u
-.param L56 = 0.2u
-.param M56 = 1
+.param W56 = 0.25u
+.param L56 = 0.13u
+.param M56 = 2
 
-.param W7  = 1u
-.param L7  = 0.2u
-.param M7  = 1
+.param W7  = 0.25u
+.param L7  = 0.13u
+.param M7  = 20
 
-.param W89 = 1u
-.param L89 = 0.2u
+.param W89 = 0.25u
+.param L89 = 0.13u
 .param M89 = 1
 
-.param Wab = 1u
-.param Lab = 0.2u
+.param Wab = 0.25u
+.param Lab = 0.13u
 .param Mab = 1
 "}
 C {vsource.sym} -150 270 0 0 {name=Vss value=0 savecurrent=false}
 C {gnd.sym} -150 320 0 0 {name=l2 lab=GND}
 C {lab_pin.sym} -150 220 0 0 {name=p2 sig_type=std_logic lab=Vss}
 C {lab_pin.sym} 360 150 0 0 {name=p3 sig_type=std_logic lab=Vss}
-C {lab_pin.sym} 360 -40 0 0 {name=p4 sig_type=std_logic lab=Vdd}
-C {lab_pin.sym} 260 110 0 0 {name=p5 sig_type=std_logic lab=Vin2}
+C {lab_pin.sym} 360 -120 0 0 {name=p4 sig_type=std_logic lab=Vdd}
+C {lab_pin.sym} 260 110 0 0 {name=p5 sig_type=std_logic lab=in2}
 C {lab_pin.sym} 260 10 0 0 {name=p6 sig_type=std_logic lab=Vin1}
 C {lab_pin.sym} 260 60 0 0 {name=p7 sig_type=std_logic lab=CLK}
 C {code.sym} -130 50 0 0 {name=Tran_Sim spice_ignore=0 only_toplevel=false value="
-
-.param T = 10n
+.param T = 400p
 .control
-*.param SimTime = 3*T + 100n
 save all
-+ @n.x1.xm1.nsg13_lv_nmos[gm]
-+ @n.x1.xm1.nsg13_lv_nmos[ids]
-
-+ @n.x1.xm2.nsg13_lv_nmos[ids]
-+ @n.x1.xm2.nsg13_lv_nmos[gm]
-
-+ @n.x1.xm3.nsg13_lv_nmos[ids]
-
-+ @n.x1.xm5.nsg13_lv_pmos[ids]
-+ @n.x1.xm5.nsg13_lv_pmos[vds]
-+ @n.x1.xm5.nsg13_lv_pmos[vgt]
-
-+ @n.x1.xm6.nsg13_lv_pmos[ids]
-+ @n.x1.xm6.nsg13_lv_pmos[vds]
-
-+ @n.x1.xm7.nsg13_lv_nmos[ids]
-
-+ @n.x1.xm8.nsg13_lv_pmos[ids]
-
++ @n.x1.xm3.nsg13_lv_nmos[vgs]
++ @n.x1.xm4.nsg13_lv_nmos[vgs]
++ @n.x1.xm5.nsg13_lv_pmos[vgs]
++ @n.x1.xm6.nsg13_lv_pmos[vgs]
++ @n.x1.xm10.nsg13_lv_pmos[vgs]
++ @n.x1.xm11.nsg13_lv_pmos[vgs]
+*
 + @n.x1.xm10.nsg13_lv_pmos[vgt]
++ @n.x1.xm10.nsg13_lv_pmos[vth]
++ @n.x1.xm7.nsg13_lv_nmos[vds]
+*
++ @n.x1.xm1.nsg13_lv_nmos[ids]
++ @n.x1.xm2.nsg13_lv_nmos[ids]
++ @n.x1.xm3.nsg13_lv_nmos[ids]
++ @n.x1.xm4.nsg13_lv_nmos[ids]
++ @n.x1.xm5.nsg13_lv_pmos[ids]
++ @n.x1.xm6.nsg13_lv_pmos[ids]
++ @n.x1.xm7.nsg13_lv_nmos[ids]
++ @n.x1.xm8.nsg13_lv_pmos[ids]
++ @n.x1.xm9.nsg13_lv_pmos[ids]
++ @n.x1.xm10.nsg13_lv_pmos[ids]
++ @n.x1.xm11.nsg13_lv_pmos[ids]
+*
++ @n.x1.xm1.nsg13_lv_nmos[gds]
++ @n.x1.xm2.nsg13_lv_nmos[gds]
++ @n.x1.xm7.nsg13_lv_nmos[gds]
 
+tran 0.1p 2n
+let vgs3 = @n.x1.xm3.nsg13_lv_nmos[vgs]
+let vgs4 = @n.x1.xm4.nsg13_lv_nmos[vgs]
+let vgs5 = @n.x1.xm5.nsg13_lv_pmos[vgs]
+let vgs6 = @n.x1.xm6.nsg13_lv_pmos[vgs]
+let vgsa = @n.x1.xm10.nsg13_lv_pmos[vgs]
+let vgsb = @n.x1.xm11.nsg13_lv_pmos[vgs]
 
-tran 10p 25n
-let gm1  = @n.x1.xm1.nsg13_lv_nmos[gm]
-let ids1 = @n.x1.xm1.nsg13_lv_nmos[ids]
-let ids5 = @n.x1.xm5.nsg13_lv_pmos[ids]
-let ids8 = @n.x1.xm8.nsg13_lv_pmos[ids]
+let vgta = @n.x1.xm10.nsg13_lv_pmos[vgt]
+let vtha = @n.x1.xm10.nsg13_lv_pmos[vth]
 
-meas tran Amp_t TRIG AT=15n TARG v(out1) VAL=0.9 CROSS=1
-meas tran reg_t TRIG v(out1) VAL=0.9 CROSS=1 TARG v(out1) VAL=0.01 CROSS=1
-meas tran Energy INTEG Pot from=15n to=25n
-*plot v(x1.Q) 
-*plot v(x1.test) 
-*plot v(x1.P)
-plot ids5 ids8
-plot v(x1.vop) v(x1.voq)
+let id1 = @n.x1.xm1.nsg13_lv_nmos[ids]
+let id2 = @n.x1.xm2.nsg13_lv_nmos[ids]
+let id3 = @n.x1.xm3.nsg13_lv_nmos[ids]
+let id4 = @n.x1.xm4.nsg13_lv_nmos[ids]
+let id5 = @n.x1.xm5.nsg13_lv_pmos[ids]
+let id6 = @n.x1.xm6.nsg13_lv_pmos[ids]
+let id7 = @n.x1.xm7.nsg13_lv_nmos[ids]
+let id8 = @n.x1.xm8.nsg13_lv_pmos[ids]
+let id9 = @n.x1.xm9.nsg13_lv_pmos[ids]
+let id10 = @n.x1.xm10.nsg13_lv_pmos[ids]
+let id11 = @n.x1.xm11.nsg13_lv_pmos[ids]
+let i_tot = i(vmeas)
+
+let rds1 = 1/@n.x1.xm1.nsg13_lv_nmos[gds]
+let rds2 = 1/@n.x1.xm2.nsg13_lv_nmos[gds]
+let rds7 = 1/@n.x1.xm7.nsg13_lv_nmos[gds]
+let Pot_SA = i_tot*v(vdd)
+let Pot_SR = i(Vmeas1)*v(vdd)
+
+meas tran id_peak1 MAX id1 from=200p to=600p
+meas tran id_peak2 MAX id2 from=200p to=600p
+meas tran id_peak3 MAX id3 from=200p to=600p
+meas tran id_peak4 MAX id4 from=200p to=600p
+meas tran id_peak5 MAX id5 from=200p to=600p
+meas tran id_peak6 MAX id6 from=200p to=600p
+meas tran id_peak7 MAX id7 from=200p to=400p
+meas tran id_peak8 MAX id8 from=200p to=600p
+meas tran id_peak9 MAX id9 from=200p to=600p
+meas tran id_peak10 MAX id10 from=200p to=600p
+meas tran id_peak11 MAX id11 from=200p to=600p
+meas tran itot_max MAX i_tot from=200p to=600p
+
+meas tran id_avg1 AVG id1 from=200p to=600p
+meas tran id_avg2 AVG id2 from=200p to=600p
+meas tran id_avg3 AVG id3 from=400p to=600p
+meas tran id_avg4 AVG id4 from=200p to=400p
+meas tran id_avg5 AVG id5 from=200p to=600p
+meas tran id_avg6 AVG id6 from=200p to=600p
+meas tran id_avg7 AVG id7 from=200p to=400p
+meas tran id_avg8 AVG id8 from=400p to=600p
+meas tran id_avg9 AVG id9 from=400p to=600p
+meas tran id_avg10 AVG id10 from=400p to=600p
+meas tran id_avg11 AVG id11 from=400p to=600p
+meas tran itot_avg AVG i_tot from=200p to=600p
+
+meas tran Amp_t TRIG AT=200p TARG v(out2) VAL=0.9 CROSS=1
+meas tran reg_t TRIG v(out2) VAL=0.9  CROSS=1 TARG v(out2) VAL=0.01 CROSS=1
+meas tran tp_lh TRIG v(clk) VAL=0.9 RISE=2 TARG v(out_latch) VAL=0.9 RISE=1
+meas tran tp_hl TRIG v(clk) VAL=0.9 RISE=3 TARG v(out_latch) VAL=0.9 FALL=2
+meas tran Avg_Power AVG Pot_SA from=200p to=600p
+meas tran Avg_SR_pot AVG POT_SR from=200p to=600p
+*meas tran Energy INTEG Pot from=200p to=400p
+meas tran Energy INTEG Pot_SA from=200p to=600p
+* se mide de dos manetas la energía en medio ciclo y ciclo entero
+
+let tp = (tp_lh+tp_hl)/2
+print tp
+wrdata ../proyecto-IPD413/simulations/SA_tran_currents.raw id1 id2 id3 id4 id5 id6 id7 id8 id9 id10 id11 
+wrdata ../proyecto-IPD413/simulations/SA_tran_voltages.raw v(out1) v(out2) v(x1.P) x(x1.Q)
+plot v(Vin1) v(in2) 
+plot v(out1) v(out2) v(clk)+2 
+plot v(clk) v(out_latch)
 .endc
 "}
-C {capa.sym} 700 180 0 0 {name=C1
+C {vsource.sym} -480 -10 0 0 {name=Vin1 value=\{VCM\} savecurrent=false}
+C {gnd.sym} -480 40 0 0 {name=l3 lab=GND}
+C {lab_pin.sym} -480 -150 0 0 {name=p12 sig_type=std_logic lab=Vin1}
+C {vsource.sym} -480 230 0 0 {name=Vin2 value=\{VCM\} savecurrent=false}
+C {gnd.sym} -480 280 0 0 {name=l4 lab=GND}
+C {lab_pin.sym} -480 90 0 0 {name=p13 sig_type=std_logic lab=in2}
+C {vsource.sym} -60 270 0 0 {name=Vclock value="PULSE(0 \{Vdd\} \{T/2\} \{T/20\} \{T/20\} \{T/2\} \{T\})" savecurrent=false}
+C {gnd.sym} -60 320 0 0 {name=l5 lab=GND}
+C {lab_pin.sym} -60 220 0 0 {name=p14 sig_type=std_logic lab=CLK}
+C {lab_pin.sym} 590 20 2 0 {name=p19 sig_type=std_logic lab=out1}
+C {lab_pin.sym} 590 60 2 0 {name=p20 sig_type=std_logic lab=out2}
+C {vsource.sym} -480 150 0 0 {name=Vstep value="PULSE(\{vstep\} \{-vstep\} \{T\} \{T/20\} \{T/20\} \{T\} \{2*T\})" savecurrent=false}
+C {code.sym} 0 50 0 0 {name=MOS_param_2.5GHz_fingers spice_ignore=0
+
+
+ only_toplevel=false value="
+** TRANSISTORES NMOS
+
+.param W12 = 2.5u
+.param L12 = 0.5u
+.param M12 = 8
+.param F12 = 5
+
+.param W34 = 2u
+.param L34 = 0.13u
+.param M34 = 4
+.param F34 = 2
+
+.param W56 = 3.5u
+.param L56 = 0.13u
+.param M56 = 1
+.param F56 = 7
+
+.param W7  = 1u
+.param L7  = 0.13u
+.param M7  = 15
+.param F7  = 1
+
+.param W89 = 1u
+.param L89 = 0.13u
+.param M89 = 2
+.param F89 = 1
+
+.param Wab = 0.7u
+.param Lab = 0.13u
+.param Mab = 4
+.param Fab = 1
+"}
+C {ammeter.sym} 360 -70 0 0 {name=Vmeas savecurrent=true spice_ignore=0}
+C {vsource.sym} -480 -90 0 0 {name=Vstep1 value="PULSE(\{-vstep\} \{vstep\} \{T\} \{T/20\} \{T/20\} \{T\} \{2*T\})" savecurrent=false}
+C {code.sym} 170 -300 0 0 {name=MOS_param_1 spice_ignore=1
+
+ only_toplevel=false value="
+** TRANSISTORES NMOS
+
+.param W12 = 1u
+.param L12 = 0.13u
+.param M12 = 1
+.param F12 = 1
+
+.param W34 = 0.3u
+.param L34 = 0.13u
+.param M34 = 1
+.param F34 = 1
+
+.param W56 = 0.3u
+.param L56 = 0.13u
+.param M56 = 1
+.param F56 = 1
+
+.param W7  = 3u
+.param L7  = 0.13u
+.param M7  = 1
+.param F7  = 1
+
+.param W89 = 0.3u
+.param L89 = 0.13u
+.param M89 = 1
+.param F89 = 1
+
+.param Wab = 0.3u
+.param Lab = 0.13u
+.param Mab = 1
+.param Fab = 1
+"}
+C {code.sym} -150 -300 0 0 {name=MOS_param_2 spice_ignore=1
+
+
+ only_toplevel=false value="
+** TRANSISTORES NMOS
+
+.param W12 = 2.5u
+.param L12 = 0.5u
+.param M12 = 6
+.param F12 = 5
+
+.param W34 = 2u
+.param L34 = 0.13u
+.param M34 = 2
+.param F34 = 2
+
+.param W56 = 3.0u
+.param L56 = 0.13u
+.param M56 = 1
+.param F56 = 7
+
+.param W7  = 1u
+.param L7  = 0.13u
+.param M7  = 10
+.param F7  = 1
+
+.param W89 = 1u
+.param L89 = 0.13u
+.param M89 = 1
+.param F89 = 1
+
+.param Wab = 0.7u
+.param Lab = 0.13u
+.param Mab = 3
+.param Fab = 1
+"}
+C {../sch/inv_latch.sym} 760 60 0 0 {name=x2}
+C {ammeter.sym} 760 -90 0 0 {name=Vmeas1 savecurrent=true spice_ignore=0}
+C {lab_pin.sym} 760 -130 0 0 {name=p8 sig_type=std_logic lab=Vdd}
+C {lab_pin.sym} 760 170 0 0 {name=p9 sig_type=std_logic lab=Vss}
+C {lab_pin.sym} 920 60 2 0 {name=p10 sig_type=std_logic lab=out_latch}
+C {capa.sym} 920 90 0 0 {name=C1
 m=1
 value=10f
 footprint=1206
 device="ceramic capacitor"}
-C {capa.sym} 700 0 0 0 {name=C2
-m=1
-value=10f
-footprint=1206
-device="ceramic capacitor"}
-C {lab_pin.sym} 620 200 0 0 {name=p8 sig_type=std_logic lab=Vss}
-C {lab_pin.sym} 940 -120 0 0 {name=p9 sig_type=std_logic lab=Vss}
-C {lab_pin.sym} 700 140 2 0 {name=p10 sig_type=std_logic lab=nout2}
-C {lab_pin.sym} 700 -40 2 0 {name=p11 sig_type=std_logic lab=nout1}
-C {vsource.sym} -50 270 0 0 {name=Vin1 value=\{VCM\} savecurrent=false}
-C {gnd.sym} -50 320 0 0 {name=l3 lab=GND}
-C {lab_pin.sym} -50 220 0 0 {name=p12 sig_type=std_logic lab=Vin1}
-C {vsource.sym} 60 270 0 0 {name=Vin2 value=\{Vin2\} savecurrent=false}
-C {gnd.sym} 60 320 0 0 {name=l4 lab=GND}
-C {lab_pin.sym} 60 220 0 0 {name=p13 sig_type=std_logic lab=Vin2}
-C {vsource.sym} 230 270 0 0 {name=Vclock value="PULSE(0 \{Vdd\} \{T/2\} \{T/40\} \{T/40\} \{T/2\} \{T\})" savecurrent=false}
-C {gnd.sym} 230 320 0 0 {name=l5 lab=GND}
-C {lab_pin.sym} 230 220 0 0 {name=p14 sig_type=std_logic lab=CLK}
-C {../sch/inv_lv.sym} 620 -30 0 0 {name=x2}
-C {lab_pin.sym} 620 -80 0 0 {name=p15 sig_type=std_logic lab=Vdd}
-C {lab_pin.sym} 700 50 0 0 {name=p16 sig_type=std_logic lab=Vss}
-C {../sch/inv_lv.sym} 620 150 0 0 {name=x3}
-C {lab_pin.sym} 700 230 0 0 {name=p17 sig_type=std_logic lab=Vss}
-C {lab_pin.sym} 620 100 0 0 {name=p18 sig_type=std_logic lab=Vdd}
-C {lab_pin.sym} 540 40 2 0 {name=p19 sig_type=std_logic lab=out1}
-C {lab_pin.sym} 550 80 2 0 {name=p20 sig_type=std_logic lab=out2}
+C {lab_pin.sym} 920 150 0 0 {name=p11 sig_type=std_logic lab=Vss}

@@ -1,0 +1,47 @@
+* Extracted by KLayout with SG13G2 LVS runset on : 04/09/2025 01:03
+
+.SUBCKT SA_LATCH Vss Vdd SA_O1 SA_O2 \$167.OUT_Latch \$1.P \$1.Q \$1.CLK
++ \$1.Vin1 \$1.Vin2 \$1.common
+M$1 Vss \$I696 \$I695 Vss sg13_lv_nmos L=0.13u W=1.5u AS=0.54p AD=0.51p
++ PS=3.72u PD=3.68u
+M$2 Vss \$I697 \$167.OUT_Latch Vss sg13_lv_nmos L=0.13u W=1.5u AS=0.54p
++ AD=0.51p PS=3.72u PD=3.68u
+M$3 Vss SA_O1 \$I696 Vss sg13_lv_nmos L=0.13u W=1u AS=0.34p AD=0.34p PS=2.68u
++ PD=2.68u
+M$4 \$I696 SA_O1 Vdd Vdd sg13_lv_pmos L=0.13u W=2.3u AS=0.782p AD=0.782p
++ PS=5.28u PD=5.28u
+M$5 Vss \$167.OUT_Latch \$I695 Vss sg13_lv_nmos L=0.13u W=1u AS=0.34p AD=0.34p
++ PS=2.68u PD=2.68u
+M$6 \$I695 \$167.OUT_Latch Vdd Vdd sg13_lv_pmos L=0.13u W=2.3u AS=0.782p
++ AD=0.782p PS=5.28u PD=5.28u
+M$7 Vss \$I695 \$167.OUT_Latch Vss sg13_lv_nmos L=0.13u W=1u AS=0.34p AD=0.34p
++ PS=2.68u PD=2.68u
+M$8 \$167.OUT_Latch \$I695 Vdd Vdd sg13_lv_pmos L=0.13u W=2.3u AS=0.782p
++ AD=0.782p PS=5.28u PD=5.28u
+M$9 Vss SA_O2 \$I697 Vss sg13_lv_nmos L=0.13u W=1u AS=0.34p AD=0.34p PS=2.68u
++ PD=2.68u
+M$10 \$I697 SA_O2 Vdd Vdd sg13_lv_pmos L=0.13u W=2.3u AS=0.782p AD=0.782p
++ PS=5.28u PD=5.28u
+M$11 Vdd \$1.CLK \$1.P Vdd sg13_lv_pmos L=0.13u W=2u AS=0.68p AD=0.68p PS=5.36u
++ PD=5.36u
+M$13 Vdd \$1.CLK \$1.Q Vdd sg13_lv_pmos L=0.13u W=2u AS=0.68p AD=0.68p PS=5.36u
++ PD=5.36u
+M$15 Vdd SA_O2 SA_O1 Vdd sg13_lv_pmos L=0.13u W=3.5u AS=0.74p AD=0.74p PS=6.96u
++ PD=6.96u
+M$22 Vdd SA_O1 SA_O2 Vdd sg13_lv_pmos L=0.13u W=3.5u AS=0.74p AD=0.74p PS=6.96u
++ PD=6.96u
+M$29 Vdd \$1.CLK SA_O1 Vdd sg13_lv_pmos L=0.13u W=2.8u AS=0.952p AD=0.952p
++ PS=8.32u PD=8.32u
+M$33 Vdd \$1.CLK SA_O2 Vdd sg13_lv_pmos L=0.13u W=2.8u AS=0.952p AD=0.952p
++ PS=8.32u PD=8.32u
+M$37 \$1.P SA_O2 SA_O1 Vss sg13_lv_nmos L=0.13u W=8u AS=2.12p AD=2.12p
++ PS=16.24u PD=16.24u
+M$45 \$1.Q SA_O1 SA_O2 Vss sg13_lv_nmos L=0.13u W=8u AS=2.12p AD=2.12p
++ PS=16.24u PD=16.24u
+M$53 \$1.Q \$1.Vin2 \$1.common Vss sg13_lv_nmos L=0.5u W=20u AS=4.4p AD=4.4p
++ PS=41.6u PD=41.6u
+M$93 \$1.P \$1.Vin1 \$1.common Vss sg13_lv_nmos L=0.5u W=20u AS=4.4p AD=4.4p
++ PS=41.6u PD=41.6u
+M$133 Vss \$1.CLK \$1.common Vss sg13_lv_nmos L=0.13u W=15u AS=5.1p AD=5.1p
++ PS=40.2u PD=40.2u
+.ENDS SA_LATCH

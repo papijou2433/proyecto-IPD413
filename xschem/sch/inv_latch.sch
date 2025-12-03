@@ -1,5 +1,4 @@
-v {xschem version=3.4.5 file_version=1.2
-}
+v {xschem version=3.4.6 file_version=1.2}
 G {}
 K {}
 V {}
@@ -55,8 +54,8 @@ N -200 190 80 190 {
 lab=Vout}
 N 80 90 80 190 {
 lab=Vout}
-C {../sch/inv_lv.sym} 0 -30 0 0 {name=x1}
-C {../sch/inv_lv.sym} 0 90 2 0 {name=x2}
+C {proyecto-IPD413/xschem/sch/inv_lv.sym} 0 -30 0 0 {name=x1}
+C {proyecto-IPD413/xschem/sch/inv_lv.sym} 0 90 2 0 {name=x2}
 C {opin.sym} 150 30 0 0 {name=p1 lab=Vout}
 C {ipin.sym} -350 0 0 0 {name=p3 lab=Vdd}
 C {ipin.sym} 0 150 2 1 {name=p4 lab=Vdd}
@@ -71,7 +70,7 @@ spiceprefix=X
 }
 C {ipin.sym} 0 30 0 0 {name=p7 lab=Vss}
 C {ipin.sym} -350 110 0 0 {name=p2 lab=Vss}
-C {../sch/inv_lv.sym} -350 60 0 0 {name=x3}
+C {proyecto-IPD413/xschem/sch/inv_lv.sym} -350 60 0 0 {name=x3}
 C {ipin.sym} 0 -80 0 0 {name=p8 lab=Vdd}
 C {ipin.sym} -200 110 0 0 {name=p9 lab=Vss}
 C {ipin.sym} -350 160 0 0 {name=p6 lab=Vdd}
@@ -85,5 +84,5 @@ model=sg13_lv_nmos
 spiceprefix=X
 }
 C {ipin.sym} -350 270 0 0 {name=p11 lab=Vss}
-C {../sch/inv_lv.sym} -350 220 0 0 {name=x4}
+C {proyecto-IPD413/xschem/sch/inv_lv.sym} -350 220 0 0 {name=x4}
 C {ipin.sym} -200 270 0 0 {name=p12 lab=Vss}

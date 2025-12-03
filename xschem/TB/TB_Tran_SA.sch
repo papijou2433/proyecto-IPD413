@@ -1,5 +1,4 @@
-v {xschem version=3.4.5 file_version=1.2
-}
+v {xschem version=3.4.6 file_version=1.2}
 G {}
 K {}
 V {}
@@ -84,7 +83,7 @@ C {code.sym} 0 -110 0 0 {name=Sim_param only_toplevel=false value=
 C {vsource.sym} -240 270 0 0 {name=Vdd value=\{Vdd\} savecurrent=false}
 C {gnd.sym} -240 320 0 0 {name=l1 lab=GND}
 C {lab_pin.sym} -240 220 0 0 {name=p1 sig_type=std_logic lab=Vdd}
-C {../sch/strongarm.sym} 340 -10 0 0 {name=x1 spice_ignore=0}
+C {proyecto-IPD413/xschem/sch/strongarm.sym} 340 -10 0 0 {name=x1 spice_ignore=0}
 C {code.sym} -130 -110 0 0 {name=Modelos only_toplevel=false value="
 .lib cornerMOSlv.lib mos_tt
 "}
@@ -351,7 +350,7 @@ C {code.sym} -150 -300 0 0 {name=MOS_param_2 spice_ignore=1
 .param Mab = 3
 .param Fab = 1
 "}
-C {../sch/inv_latch.sym} 760 60 0 0 {name=x2}
+C {proyecto-IPD413/xschem/sch/inv_latch.sym} 760 60 0 0 {name=x2}
 C {ammeter.sym} 760 -90 0 0 {name=Vmeas1 savecurrent=true spice_ignore=0}
 C {lab_pin.sym} 760 -130 0 0 {name=p8 sig_type=std_logic lab=Vdd}
 C {lab_pin.sym} 760 170 0 0 {name=p9 sig_type=std_logic lab=Vss}

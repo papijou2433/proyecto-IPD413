@@ -1,5 +1,4 @@
-v {xschem version=3.4.5 file_version=1.2
-}
+v {xschem version=3.4.6 file_version=1.2}
 G {}
 K {}
 V {}
@@ -37,7 +36,7 @@ fop       >= 1[GHz]
 \\mu W  <= 
 Cl           = 10fF
 } -160 -110 0 0 0.3 0.3 {}
-C {TB/TB_Tran_SA.sym} -50 -560 0 0 {name=x1}
+C {proyecto-IPD413/xschem/TB/TB_Tran_SA.sym} -50 -560 0 0 {name=x1}
 C {title.sym} -200 130 0 0 {name=l1 author="Felipe Illanes - Sebastián Sánchez"}
-C {TB/TB_Op_SA.sym} -30 -520 0 0 {name=x2}
-C {sch/Extras.sym} -30 -460 0 0 {name=x3}
+C {proyecto-IPD413/xschem/TB/TB_Op_SA.sym} -30 -520 0 0 {name=x2}
+C {proyecto-IPD413/xschem/sch/Extras.sym} -30 -460 0 0 {name=x3}

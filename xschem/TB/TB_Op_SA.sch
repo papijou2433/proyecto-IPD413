@@ -1,5 +1,4 @@
-v {xschem version=3.4.5 file_version=1.2
-}
+v {xschem version=3.4.6 file_version=1.2}
 G {}
 K {}
 V {}
@@ -81,7 +80,7 @@ C {code.sym} -40 -110 0 0 {name=Sim_param only_toplevel=false value=
 C {vsource.sym} -280 270 0 0 {name=Vdd value=\{Vdd\} savecurrent=false}
 C {gnd.sym} -280 320 0 0 {name=l1 lab=GND}
 C {lab_pin.sym} -280 220 0 0 {name=p1 sig_type=std_logic lab=Vdd}
-C {../sch/strongarm.sym} 300 -10 0 0 {name=x1}
+C {proyecto-IPD413/xschem/sch/strongarm.sym} 300 -10 0 0 {name=x1}
 C {code.sym} -170 -110 0 0 {name=Modelos only_toplevel=false value="
 .lib cornerMOSlv.lib mos_tt
 "}
